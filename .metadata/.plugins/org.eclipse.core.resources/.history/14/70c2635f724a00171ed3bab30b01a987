@@ -1,0 +1,15 @@
+package control;
+
+import model.Obra;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrObra {
+	private Obra obra;
+	
+	
+	
+}

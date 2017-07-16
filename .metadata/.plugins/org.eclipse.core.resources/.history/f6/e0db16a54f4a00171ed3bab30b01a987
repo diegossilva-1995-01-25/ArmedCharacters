@@ -1,0 +1,14 @@
+package list;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import model.Personagem;;
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class ListPersonagensObra {
+	
+}

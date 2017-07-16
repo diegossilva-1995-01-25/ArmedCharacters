@@ -1,0 +1,247 @@
+package view;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import javax.swing.JTextField;
+
+import control.CtrPersonagem;
+import model.Arma;
+import model.Calibre;
+import model.Personagem;
+
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+
+public class TelaPersonagem extends Tela implements ActionListener {
+	private JTextField txtId;
+	private JTextField txtNome;
+	private JTextField txtDataNasc;
+	private JTextField txtOrigem;
+	private JTextField txtCorOlhos;
+	private JTextField txtCorCabelo;
+	private JTextField txtRaca;
+	private JTextField txtEtnia;
+	private JTextField txtTipoPersonagem;
+	private JTextField txtBiotipo;
+	private JTable tablePersonagem;
+	private SimpleDateFormat formatoData;
+	private JComboBox cbObra;
+	
+	private Personagem personagem;
+	private CtrPersonagem controlePersonagem;
+	
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaPersonagem() {
+		formatoData = new SimpleDateFormat("dd/mm/yyyy");
+		
+		setTitle("Tela de Cadastro de Personagens");
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+		
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		panel.add(txtId);
+		txtId.setColumns(10);
+		
+		JLabel lblNome = new JLabel("Nome");
+		panel.add(lblNome);
+		
+		txtNome = new JTextField();
+		txtNome.setColumns(10);
+		panel.add(txtNome);
+		
+		JLabel lblDataNasc = new JLabel("Data de Nascimento");
+		panel.add(lblDataNasc);
+		
+		txtDataNasc = new JTextField();
+		txtDataNasc.setColumns(10);
+		panel.add(txtDataNasc);
+		
+		JLabel lblOrigem = new JLabel("Origem");
+		panel.add(lblOrigem);
+		
+		txtOrigem = new JTextField();
+		txtOrigem.setColumns(10);
+		panel.add(txtOrigem);
+		
+		JLabel lblCorOlhos = new JLabel("Cor de Olhos");
+		panel.add(lblCorOlhos);
+		
+		txtCorOlhos = new JTextField();
+		txtCorOlhos.setColumns(10);
+		panel.add(txtCorOlhos);
+		
+		JLabel lblCorCabelo = new JLabel("Cor do Cabelo");
+		panel.add(lblCorCabelo);
+		
+		txtCorCabelo = new JTextField();
+		txtCorCabelo.setColumns(10);
+		panel.add(txtCorCabelo);
+		
+		JLabel lblRaca = new JLabel("Ra\u00E7a (Cor Pele)");
+		panel.add(lblRaca);
+		
+		txtRaca = new JTextField();
+		txtRaca.setColumns(10);
+		panel.add(txtRaca);
+		
+		JLabel lblEtnia = new JLabel("Etnia");
+		panel.add(lblEtnia);
+		
+		txtEtnia = new JTextField();
+		txtEtnia.setColumns(10);
+		panel.add(txtEtnia);
+		
+		JLabel lblTipoPersonagem = new JLabel("Tipo de Personagem");
+		panel.add(lblTipoPersonagem);
+		
+		txtTipoPersonagem = new JTextField();
+		txtTipoPersonagem.setColumns(10);
+		panel.add(txtTipoPersonagem);
+		
+		JLabel lblBiotipo = new JLabel("Biotipo (Gordo, Magro, Alto etc)");
+		panel.add(lblBiotipo);
+		
+		txtBiotipo = new JTextField();
+		txtBiotipo.setColumns(10);
+		panel.add(txtBiotipo);
+		
+		JLabel lblObra = new JLabel("Obra");
+		panel.add(lblObra);
+		
+		cbObra = new JComboBox();
+		panel.add(cbObra);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tablePersonagem = new JTable();
+		getContentPane().add(tablePersonagem, BorderLayout.CENTER);
+		
+		controlePersonagem = new CtrPersonagem();
+
+	}
+	
+	public Personagem telaParaPersonagem(Personagem p) {
+		
+		try {
+			
+			p.setId(Integer.parseInt(txtId.getText()));
+			p.setNome(txtNome.getText());
+			p.setDataNasc(formatoData.parse(txtDataNasc.getText()));
+			p.setOrigem(txtOrigem.getText());
+			p.setCorOlhos(txtCorOlhos.getText());
+			p.setCorCabelo(txtCorCabelo.getText());
+			p.setRaca(txtRaca.getText());
+			p.setEtnia(txtEtnia.getText());
+			p.setTipoPersonagem(txtTipoPersonagem.getText());
+			p.setBiotipo(txtBiotipo.getText());
+			p.setObra(Integer.parseInt(cbObra.getSelectedItem().toString()));
+			
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return p;
+		
+	}
+	
+	public void personagemParaTela(Personagem p) {
+		txtId.setText(String.valueOf(p.getId()));
+		txtNome.setText(p.getNome());
+		txtDataNasc.setText(String.valueOf(p.getDataNasc()));
+		txtOrigem.setText(p.getOrigem());
+		txtCorOlhos.setText(p.getCorOlhos());
+		txtCorCabelo.setText(p.getCorCabelo());
+		txtRaca.setText(p.getRaca());
+		txtEtnia.setText(p.getEtnia());
+		txtTipoPersonagem.setText(p.getTipoPersonagem());
+		txtBiotipo.setText(p.getBiotipo());
+		//cbObra.setSelectedItem(anObject);
+	}
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		txtId.setText("");
+		txtNome.setText("");
+		txtDataNasc.setText("");
+		txtOrigem.setText("");
+		txtCorOlhos.setText("");
+		txtCorCabelo.setText("");
+		txtRaca.setText("");
+		txtEtnia.setText("");
+		txtTipoPersonagem.setText("");
+		txtBiotipo.setText("");
+		//cbObra.setSelectedItem(anObject);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			personagem = new Personagem();
+			personagem = telaParaPersonagem(personagem);
+			controlePersonagem.adicionarPersonagem(personagem);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			personagem = new Personagem();
+			personagem = telaParaPersonagem(personagem);
+			controlePersonagem.alterarPersonagem(personagem);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			personagem = new Personagem();
+			personagem = telaParaPersonagem(personagem);
+			controlePersonagem.consultarPersonagem(personagem.getNome());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			personagem = new Personagem();
+			personagem = telaParaPersonagem(personagem);
+			personagem = controleCalibre.excluirCalibre(calibre);
+			limparTela();
+			
+		}
+		
+		
+	}
+	
+	public void atualizarTabela() {
+		tablePersonagem.invalidate();
+		tablePersonagem.revalidate();
+		tablePersonagem.repaint();
+	}
+
+}

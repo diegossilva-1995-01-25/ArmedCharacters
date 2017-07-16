@@ -1,0 +1,14 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+
+public class PanelGame extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelGame() {
+
+	}
+
+}

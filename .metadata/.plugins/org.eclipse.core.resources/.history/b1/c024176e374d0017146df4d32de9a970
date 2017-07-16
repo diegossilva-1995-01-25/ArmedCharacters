@@ -1,0 +1,65 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class PanelGame extends PanelObraVisual {
+	private JTextField txtPlataformas;
+	private JTextField txtCriador;
+	private JTextField txtDesenvolvedoras;
+	private JTable tableGame;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelGame() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblPlataformas = new JLabel("Plataformas");
+		panel.add(lblPlataformas);
+		
+		txtPlataformas = new JTextField();
+		panel.add(txtPlataformas);
+		txtPlataformas.setColumns(10);
+		
+		JLabel lblCriador = new JLabel("Criador");
+		panel.add(lblCriador);
+		
+		txtCriador = new JTextField();
+		txtCriador.setColumns(10);
+		panel.add(txtCriador);
+		
+		JLabel lblDesenvolvedoras = new JLabel("Desenvolvedoras");
+		panel.add(lblDesenvolvedoras);
+		
+		txtDesenvolvedoras = new JTextField();
+		txtDesenvolvedoras.setColumns(10);
+		panel.add(txtDesenvolvedoras);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tableGame = new JTable();
+		add(tableGame, BorderLayout.CENTER);
+
+	}
+
+}

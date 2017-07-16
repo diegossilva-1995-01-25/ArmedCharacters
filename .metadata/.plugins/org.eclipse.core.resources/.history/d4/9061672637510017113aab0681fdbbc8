@@ -1,0 +1,242 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
+
+import dao.DAOConexaoSingleton;
+import list.ListArmasCalibre;
+import model.Arma;
+import model.Calibre;
+import model.Fabricante;
+import model.Personagem;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrCalibre implements ListArmasCalibre, TableModel {
+	private Calibre calibre;
+	private Connection conex;
+	private List<Calibre> listaCalibres;
+	//private ListArmasCalibre armasCalibre;
+	private List<Arma> listArmas;
+	private Arma arma;
+	
+	public CtrCalibre() {
+		listaCalibres = new ArrayList<>();
+		//listArmas = ListArmasCalibre.instanciarLista();
+		arma = new Arma();
+		calibre = new Calibre();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	public void adicionarCalibre(Calibre c) {
+		String sql = "INSERT INTO calibre (id, nome, tipoMunicao, diametroProjetil, comprimento) "
+				+ "VALUES (?, ?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, c.getId());
+			statem.setString(2, c.getNome());
+			statem.setString(3, c.getTipoMunicao());
+			statem.setDouble(4, c.getDiametroProjetil());
+			statem.setDouble(5, c.getComprimento());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void alterarCalibre(Calibre c) {
+		String sql = "UPDATE calibre SET id = ?, nome = ?, tipoMunicao = ?, "
+				+ "diametroProjetil = ?, comprimento = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, c.getId());
+			statem.setString(2, c.getNome());
+			statem.setString(3, c.getTipoMunicao());
+			statem.setDouble(4, c.getDiametroProjetil());
+			statem.setDouble(5, c.getComprimento());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Calibre excluirCalibre(Calibre c) {
+		String sql = "DELETE FROM calibre WHERE id = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, c.getId());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return c;
+	}
+	
+	public List<Calibre> consultarCalibre(String nome) {
+		listaCalibres = new ArrayList<Calibre>();
+		String sql = "SELECT * FROM calibre WHERE nome LIKE ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setString(1, "%" + nome + "%");
+			ResultSet rs = statem.executeQuery();
+			
+			while(rs.next()) {
+				Calibre c = new Calibre();
+				
+				c.setId(rs.getInt("id"));
+				c.setNome(rs.getString("nome"));
+				c.setTipoMunicao(rs.getString("tipoMunicao"));
+				c.setDiametroProjetil(rs.getDouble("diametroProjetil"));
+				c.setComprimento(rs.getDouble("comprimento"));
+				listaCalibres.add(c);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listaCalibres;
+	}
+	
+	public int contarCalibres() {
+		int contagem = 0;
+		
+		
+		
+		return contagem;
+	}
+
+	@Override
+	public List<Arma> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Arma a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String nomeCalibre) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Arma removerArma(Arma a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		// TODO Auto-generated method stub
+		switch (columnIndex) {
+		
+			case 0: return Integer.class;
+			case 1: return String.class;
+			case 2: return String.class;
+			case 3: return Double.class;
+			case 4: return Double.class;
+			
+		}
+	
+		return String.class;
+	}
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return 5;
+	}
+
+	@Override
+	public String getColumnName(int columnIndex) {
+		// TODO Auto-generated method stub
+	switch (columnIndex) {
+		
+		case 0: return "Id";
+		case 1: return "Nome";
+		case 2: return "Tipo de Munição";
+		case 3: return "Diâmetro do Projetil";
+		case 4: return "Comprimento";
+		
+	}
+		return "";
+	}
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return listaCalibres.size();
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		Calibre c = listaCalibres.get(rowIndex);
+		
+		switch (columnIndex) {
+		
+			case 0: return c.getId();
+			case 1: return c.getNome();
+			case 2: return c.getTipoMunicao();
+			case 3: return c.getDiametroProjetil();
+			case 4: return c.getComprimento();
+		
+		}
+	
+		return "";
+	}
+
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void removeTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Calibre retornarLinha(int linha) {
+		return listaCalibres.get(linha);
+	}
+	
+}

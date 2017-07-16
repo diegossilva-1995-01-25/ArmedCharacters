@@ -1,0 +1,63 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import list.ListPersonagensObra;
+import model.Personagem;
+import obrachildren.obravisualchildren.Serie;
+
+public class CtrSerie implements ListPersonagensObra {
+
+	private Serie Serie;
+	private List<Serie> listaSeries;
+	
+	public CtrSerie() {
+		listaSeries = new ArrayList<>();
+	}
+	
+	public void adicionarSerie(Serie s) {
+		
+	}
+	
+	public void alterarSerie(Serie s) {
+		
+	}
+	
+	public Serie excluirSerie(Serie s) {
+		return s;
+	}
+	
+	public List<Serie> consultarSerie(String titulo) {
+		return listaSeries;
+	}
+	
+	public void contarSeries() {
+		
+	}
+
+	@Override
+	public List<Personagem> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Personagem p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String tituloObra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Personagem removerArma(Personagem p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

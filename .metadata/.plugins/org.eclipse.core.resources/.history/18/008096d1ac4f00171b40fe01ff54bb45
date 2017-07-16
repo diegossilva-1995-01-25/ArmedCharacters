@@ -1,0 +1,88 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.DAOConexaoSingleton;
+import list.ListPersonagensObra;
+import model.Personagem;
+import obrachildren.obravisualchildren.Filme;
+
+public class CtrFilme implements ListPersonagensObra {
+
+	private Filme filme;
+	private List<Filme> listaFilmes;
+	private Connection conex;
+	
+	public CtrFilme() {
+		listaFilmes = new ArrayList<>();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	public void adicionarFilme(Filme f) {
+		String sql = "INSERT INTO arma (id, titulo, ano, genero, distribuidora, "
+				+ "franquia, tituloDublado, diretor) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, f.getId());
+			statem.setString(2, f.getTitulo());
+			statem.setInt(3, f.getAno());
+			statem.setString(4, f.getGenero());
+			statem.setString(5, f.getDistribuidora());
+			statem.setString(6, f.getFranquia());
+			statem.setString(7, f.getTituloDublado());
+			statem.setString(8, f.getDiretor());
+			statem.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void alterarFilme(Filme f) {
+		
+	}
+	
+	public Filme excluirFilme(Filme f) {
+		return f;
+	}
+	
+	public List<Filme> consultarFilme(String titulo) {
+		return listaFilmes;
+	}
+	
+	public void contarFilmes() {
+		
+	}
+
+	@Override
+	public List<Personagem> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Personagem p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String tituloObra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Personagem removerArma(Personagem p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

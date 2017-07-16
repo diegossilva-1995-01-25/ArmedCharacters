@@ -1,0 +1,63 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import list.ListPersonagensObra;
+import model.Personagem;
+import obrachildren.obravisualchildren.Filme;
+
+public class CtrFilme implements ListPersonagensObra {
+
+	private Filme filme;
+	private List<Filme> listaFilmes;
+	
+	public CtrFilme() {
+		listaFilmes = new ArrayList<>();
+	}
+	
+	public void adicionarFilme(Filme f) {
+		
+	}
+	
+	public void alterarFilme(Filme f) {
+		
+	}
+	
+	public Filme excluirFilme(Filme f) {
+		return f;
+	}
+	
+	public List<Filme> consultarFilme() {
+		return listaFilmes;
+	}
+	
+	public void contarFilmes() {
+		
+	}
+
+	@Override
+	public List<Personagem> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Personagem p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String tituloObra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Personagem removerArma(Personagem p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

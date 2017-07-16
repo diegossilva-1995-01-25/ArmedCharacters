@@ -1,0 +1,68 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import list.ListArmasFabricante;
+import model.Arma;
+import model.Fabricante;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrFabricante implements ListArmasFabricante {
+	private Fabricante fabricante;
+	private List<Fabricante> listaFabricantes;
+	
+	public CtrFabricante() {
+		listaFabricantes = new ArrayList<>();
+	}
+	
+	public void adicionarFabricante(Fabricante f) {
+		
+	}
+	
+	public void alterarFabricante(Fabricante f) {
+		
+	}
+	
+	public Fabricante excluirFabricante(Fabricante f) {
+		return f;
+	}
+	
+	public List<Fabricante> consultarFabricante() {
+		return listaFabricantes;
+	}
+	
+	public void contarFabricante() {
+		
+	}
+
+	@Override
+	public List<Arma> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Arma a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String nomeFabricante) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Arma removerArma(Arma a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

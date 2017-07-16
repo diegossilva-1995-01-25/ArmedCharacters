@@ -1,0 +1,42 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Calibre;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrCalibre {
+	private Calibre calibre;
+	private List<Calibre> listaCalibres;
+	
+	public CtrCalibre() {
+		listaCalibres = new ArrayList<>();
+	}
+	
+	public void adicionarCalibre() {
+		
+	}
+	
+	public void alterarCalibre(Calibre c) {
+		
+	}
+	
+	public Calibre excluirCalibre(Calibre c) {
+		return c;
+	}
+	
+	public List<Calibre> consultarArma() {
+		return listaCalibres;
+	}
+	
+	public void contarCalibres() {
+		
+	}
+	
+	
+}

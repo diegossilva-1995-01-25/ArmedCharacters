@@ -1,0 +1,19 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import obrachildren.ObraEscrita;
+
+public class CtrObraEscrita {
+	
+	private ObraEscrita obraEscrita;
+	private List<ObraEscrita> listaObrasEscritas;
+	
+	public CtrObraEscrita() {
+		listaObrasEscritas = new ArrayList<>();
+	}
+	
+	
+	
+}

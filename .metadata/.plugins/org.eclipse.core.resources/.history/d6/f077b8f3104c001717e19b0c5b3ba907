@@ -1,0 +1,65 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+
+public class PanelObraVisual extends JPanel implements ActionListener {
+	private JTextField txtDistribuidora;
+	private JTextField txtFranquia;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelObraVisual() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblDistribuidora = new JLabel("Distribuidora");
+		panel.add(lblDistribuidora);
+		
+		txtDistribuidora = new JTextField();
+		panel.add(txtDistribuidora);
+		txtDistribuidora.setColumns(10);
+		
+		JLabel lblFranquia = new JLabel("Franquia");
+		panel.add(lblFranquia);
+		
+		txtFranquia = new JTextField();
+		txtFranquia.setColumns(10);
+		panel.add(txtFranquia);
+		
+		JRadioButton rdFilme = new JRadioButton("Filme");
+		rdFilme.setSelected(true);
+		panel.add(rdFilme);
+		
+		JRadioButton rdGame = new JRadioButton("Game");
+		panel.add(rdGame);
+		
+		JRadioButton rdSerie = new JRadioButton("S\u00E9rie");
+		panel.add(rdSerie);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void atualizarTela() {
+		this.invalidate();
+		this.revalidate();
+		this.repaint();
+	}
+
+}

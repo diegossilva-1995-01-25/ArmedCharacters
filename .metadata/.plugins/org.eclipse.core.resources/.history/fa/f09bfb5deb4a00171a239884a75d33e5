@@ -1,0 +1,26 @@
+package view;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+
+public class TelaArma extends Tela {
+	private JPanel panelCampos;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaArma() {
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+		
+		panelCampos = new JPanel();
+		getContentPane().add(panelCampos, BorderLayout.NORTH);
+		panelCampos.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panelCampos.add(lblNewLabel);
+
+	}
+
+}

@@ -1,0 +1,150 @@
+package view;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+
+public class TelaArma extends Tela {
+	private JPanel panelCampos;
+	private JTextField textField;
+	private JLabel lblNomeNaObra;
+	private JTextField textField_1;
+	private JLabel lblPeso;
+	private JTextField textField_2;
+	private JLabel lblComprimentoCm;
+	private JTextField textField_3;
+	private JLabel lblAlcance;
+	private JTextField textField_4;
+	private JLabel lblEquipamentos;
+	private JTextField textField_5;
+	private JLabel lblCapacidade;
+	private JTextField textField_6;
+	private JButton btnNewButton;
+	private JButton button;
+	private JButton button_1;
+	private JButton button_2;
+	private JButton button_3;
+	private JButton button_4;
+	private JTable table;
+	private JLabel label_5;
+	private JLabel label_6;
+	private JLabel label_7;
+	private JComboBox comboBox;
+	private JComboBox comboBox_1;
+	private JComboBox comboBox_2;
+	private JLabel lblId;
+	private JTextField textField_7;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaArma() {
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+		
+		panelCampos = new JPanel();
+		getContentPane().add(panelCampos, BorderLayout.NORTH);
+		panelCampos.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		lblId = new JLabel("Id");
+		panelCampos.add(lblId);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		panelCampos.add(textField_7);
+		
+		JLabel lblModelo = new JLabel("Modelo");
+		panelCampos.add(lblModelo);
+		
+		textField = new JTextField();
+		panelCampos.add(textField);
+		textField.setColumns(10);
+		
+		lblNomeNaObra = new JLabel("Nome na Obra");
+		panelCampos.add(lblNomeNaObra);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		panelCampos.add(textField_1);
+		
+		lblPeso = new JLabel("Peso (Vazia)");
+		panelCampos.add(lblPeso);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		panelCampos.add(textField_2);
+		
+		lblComprimentoCm = new JLabel("Comprimento (cm)");
+		panelCampos.add(lblComprimentoCm);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		panelCampos.add(textField_3);
+		
+		lblAlcance = new JLabel("Alcance");
+		panelCampos.add(lblAlcance);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		panelCampos.add(textField_4);
+		
+		lblEquipamentos = new JLabel("Equipamentos");
+		panelCampos.add(lblEquipamentos);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		panelCampos.add(textField_5);
+		
+		lblCapacidade = new JLabel("Capacidade (Pente/Tambor)");
+		panelCampos.add(lblCapacidade);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		panelCampos.add(textField_6);
+		
+		label_5 = new JLabel("New label");
+		panelCampos.add(label_5);
+		
+		comboBox_2 = new JComboBox();
+		panelCampos.add(comboBox_2);
+		
+		label_6 = new JLabel("New label");
+		panelCampos.add(label_6);
+		
+		comboBox_1 = new JComboBox();
+		panelCampos.add(comboBox_1);
+		
+		label_7 = new JLabel("New label");
+		panelCampos.add(label_7);
+		
+		comboBox = new JComboBox();
+		panelCampos.add(comboBox);
+		
+		btnNewButton = new JButton("New button");
+		panelCampos.add(btnNewButton);
+		
+		button = new JButton("New button");
+		panelCampos.add(button);
+		
+		button_1 = new JButton("New button");
+		panelCampos.add(button_1);
+		
+		button_2 = new JButton("New button");
+		panelCampos.add(button_2);
+		
+		button_3 = new JButton("New button");
+		panelCampos.add(button_3);
+		
+		button_4 = new JButton("New button");
+		panelCampos.add(button_4);
+		
+		table = new JTable();
+		getContentPane().add(table, BorderLayout.CENTER);
+
+	}
+
+}

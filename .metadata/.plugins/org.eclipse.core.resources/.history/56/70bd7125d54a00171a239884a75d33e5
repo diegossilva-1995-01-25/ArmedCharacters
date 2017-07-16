@@ -1,0 +1,17 @@
+package view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
+public class TelaPersonagem extends Tela {
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaPersonagem() {
+		setBounds(100, 100, horizontal, vertical);
+
+	}
+
+}

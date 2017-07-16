@@ -1,0 +1,262 @@
+package view;
+
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import control.CtrObra;
+import control.CtrSerie;
+import model.Obra;
+import obrachildren.obravisualchildren.Serie;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class TelaSerie extends Tela implements ActionListener, ListSelectionListener {
+
+	private JPanel contentPane;
+	private JTextField txtId;
+	private JTextField txtTitulo;
+	private JTextField txtAno;
+	private JTextField txtGenero;
+	private JTextField txtDistribuidora;
+	private JTextField txtFranquia;
+	private JTextField txtNumEpisodios;
+	private JTextField txtNumTemporadas;
+	private JTextField txtTipoSerie;
+	private JTable tableSerie;
+	private Serie serie;
+	private CtrSerie controleSerie;
+	private CtrObra controleObra;
+	private Obra obra;
+	private JScrollPane rolagem;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaSerie() {
+		setResizable(false);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setColumns(10);
+		panel.add(txtId);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		txtTitulo = new JTextField();
+		txtTitulo.setColumns(10);
+		panel.add(txtTitulo);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		txtAno = new JTextField();
+		txtAno.setColumns(10);
+		panel.add(txtAno);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		txtGenero = new JTextField();
+		txtGenero.setColumns(10);
+		panel.add(txtGenero);
+		
+		JLabel lblDistribuidora = new JLabel("Distribuidora");
+		panel.add(lblDistribuidora);
+		
+		txtDistribuidora = new JTextField();
+		txtDistribuidora.setColumns(10);
+		panel.add(txtDistribuidora);
+		
+		JLabel lblFranquia = new JLabel("Franquia");
+		panel.add(lblFranquia);
+		
+		txtFranquia = new JTextField();
+		txtFranquia.setColumns(10);
+		panel.add(txtFranquia);
+		
+		JLabel lblNumEpisodios = new JLabel("N\u00FAmero de Epis\u00F3dios");
+		panel.add(lblNumEpisodios);
+		
+		txtNumEpisodios = new JTextField();
+		txtNumEpisodios.setColumns(10);
+		panel.add(txtNumEpisodios);
+		
+		JLabel lblNumTemporadas = new JLabel("N\u00FAmero de Temporadas");
+		panel.add(lblNumTemporadas);
+		
+		txtNumTemporadas = new JTextField();
+		txtNumTemporadas.setColumns(10);
+		panel.add(txtNumTemporadas);
+		
+		JLabel lblTipoSerie = new JLabel("Tipo de S\u00E9rie");
+		panel.add(lblTipoSerie);
+		
+		txtTipoSerie = new JTextField();
+		txtTipoSerie.setColumns(10);
+		panel.add(txtTipoSerie);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		JPanel panelTable = new JPanel();
+		contentPane.add(panelTable, BorderLayout.CENTER);
+		
+		obra = new Obra();
+		serie = new Serie();
+		controleObra = new CtrObra();
+		controleSerie = new CtrSerie();
+		
+		rolagem = new JScrollPane();
+		tableSerie = new JTable(controleSerie);
+		tableSerie.getSelectionModel().addListSelectionListener(this);
+		rolagem.getViewport().add(tableSerie); // Esta linha
+		add(rolagem, BorderLayout.CENTER);
+		
+		controleSerie.consultarSerie("");
+		atualizarTabela();
+	}
+
+
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		txtId.setText("");
+		txtTitulo.setText("");
+		txtAno.setText("");
+		txtGenero.setText("");
+		txtDistribuidora.setText("");
+		txtFranquia.setText("");
+		txtNumEpisodios.setText("");
+		txtNumTemporadas.setText("");
+		txtTipoSerie.setText("");
+	}
+
+
+
+	@Override
+	public void valueChanged(ListSelectionEvent arg0) {
+		// TODO Auto-generated method stub
+		int linha = tableSerie.getSelectedRow();
+		Serie s = controleSerie.retornarLinha(linha);
+		serieParaTela(s);
+	}
+
+	public Serie telaParaSerie(Serie s) {
+		s.setId(Integer.parseInt(txtId.getText()));
+		s.setTitulo(txtTitulo.getText());
+		s.setAno(Integer.parseInt(txtAno.getText()));
+		s.setGenero(txtGenero.getText());
+		s.setDistribuidora(txtDistribuidora.getText());
+		s.setFranquia(txtFranquia.getText());
+		s.setNumEpisodios(Integer.parseInt(txtNumEpisodios.getText()));
+		s.setNumTemporadas(Integer.parseInt(txtNumTemporadas.getText()));
+		s.setTipoSerie(txtTipoSerie.getText());
+		
+		return s;
+	}
+	
+	public void serieParaTela(Serie s) {
+		txtId.setText(String.valueOf(s.getId()));
+		txtTitulo.setText(s.getTitulo());
+		txtAno.setText(String.valueOf(s.getAno()));
+		txtGenero.setText(s.getGenero());
+		txtDistribuidora.setText(s.getDistribuidora());
+		txtFranquia.setText(s.getFranquia());
+		txtNumEpisodios.setText(String.valueOf(s.getNumEpisodios()));
+		txtNumTemporadas.setText(String.valueOf(s.getNumTemporadas()));
+		txtTipoSerie.setText(s.getTipoSerie());
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			serie = new Serie();
+			serie = telaParaSerie(serie);
+			controleObra.adicionarObra(obra);
+			controleSerie.adicionarSerie(serie);
+			controleSerie.consultarSerie("");
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			serie = new Serie();
+			serie = telaParaSerie(serie);
+			controleObra.adicionarObra(obra);
+			controleSerie.alterarSerie(serie);
+			controleSerie.consultarSerie("");
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			//serie = new Serie();
+			//serie = telaParaSerie(serie);
+			//controleObra.consultarObra(obra.getTitulo());
+			controleSerie.consultarSerie(txtTitulo.getText());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			serie = new Serie();
+			serie = telaParaSerie(serie);
+			obra = controleObra.excluirObra(obra);
+			serie = controleSerie.excluirSerie(serie);
+			controleSerie.consultarSerie("");
+			atualizarTabela();
+			limparTela();
+			
+		}
+	}
+	
+	public void atualizarTabela() {
+		tableSerie.invalidate();
+		tableSerie.revalidate();
+		tableSerie.repaint();
+	}
+	
+	public Obra telaParaObra(Obra o) {
+		o.setId(Integer.parseInt(txtId.getText()));
+		o.setTitulo(txtTitulo.getText());
+		o.setAno(Integer.parseInt(txtAno.getText()));
+		o.setGenero(txtGenero.getText());
+		
+		return o;
+	}
+
+}

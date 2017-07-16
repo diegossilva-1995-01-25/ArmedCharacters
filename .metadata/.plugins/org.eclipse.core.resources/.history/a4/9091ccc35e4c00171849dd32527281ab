@@ -1,0 +1,38 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import list.ListPersonagensObra;
+import obrachildren.obravisualchildren.Game;
+
+public class CtrGame implements ListPersonagensObra {
+
+	private Game Game;
+	private List<Game> listaGames;
+	
+	public CtrGame() {
+		listaGames = new ArrayList<>();
+	}
+	
+	public void adicionarGame() {
+		
+	}
+	
+	public void alterarGame(Game g) {
+		
+	}
+	
+	public Game excluirGame(Game g) {
+		return g;
+	}
+	
+	public List<Game> consultarGame() {
+		return listaGames;
+	}
+	
+	public void contarGames() {
+		
+	}
+	
+}

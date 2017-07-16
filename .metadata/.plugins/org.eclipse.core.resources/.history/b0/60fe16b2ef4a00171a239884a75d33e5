@@ -1,0 +1,104 @@
+package model;
+
+import java.sql.Date;
+
+import list.ListArmasPersonagem;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class Personagem {
+	private String nome;
+	private Date dataNasc;
+	private String origem;
+	private String corOlhos;
+	private String corCabelo;
+	private String raca;
+	private String etnia;
+	private String tipoPersonagem;
+	private ListArmasPersonagem armas;
+	private String biotipo;
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public Date getDataNasc() {
+		return dataNasc;
+	}
+	
+	public String getOrigem() {
+		return origem;
+	}
+	
+	public String getCorOlhos() {
+		return corOlhos;
+	}
+	
+	public String getCorCabelo() {
+		return corCabelo;
+	}
+	
+	public String getRaca() {
+		return raca;
+	}
+	
+	public String getEtnia() {
+		return etnia;
+	}
+	
+	public String getTipoPersonagem() {
+		return tipoPersonagem;
+	}
+	
+	public ListArmasPersonagem getArmas() {
+		return armas;
+	}
+	
+	public String getBiotipo() {
+		return biotipo;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setDataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+	
+	public void setOrigem(String origem) {
+		this.origem = origem;
+	}
+	
+	public void setCorOlhos(String corOlhos) {
+		this.corOlhos = corOlhos;
+	}
+	
+	public void setCorCabelo(String corCabelo) {
+		this.corCabelo = corCabelo;
+	}
+	
+	public void setRaca(String raca) {
+		this.raca = raca;
+	}
+	
+	public void setEtnia(String etnia) {
+		this.etnia = etnia;
+	}
+	
+	public void setTipoPersonagem(String tipoPersonagem) {
+		this.tipoPersonagem = tipoPersonagem;
+	}
+	
+	public void setArmas(ListArmasPersonagem armas) {
+		this.armas = armas;
+	}
+	
+	public void setBiotipo(String biotipo) {
+		this.biotipo = biotipo;
+	}
+	
+}

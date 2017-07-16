@@ -1,0 +1,41 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Arma;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrArma {
+	private Arma arma;
+	private List<Arma> listaArmas;
+	
+	public CtrArma() {
+		listaArmas = new ArrayList<>();
+	}
+	
+	public void adicionarArma() {
+		
+	}
+	
+	public void alterarArma(Arma a) {
+		
+	}
+	
+	public Arma excluirArma(Arma a) {
+		return a;
+	}
+	
+	public List<Arma> consultarArma() {
+		return listaArmas;
+	}
+	
+	public void contarArmas() {
+		
+	}
+	
+}

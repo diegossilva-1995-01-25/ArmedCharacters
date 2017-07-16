@@ -1,0 +1,37 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import obrachildren.obravisualchildren.Serie;
+
+public class CtrSerie {
+
+	private Serie Serie;
+	private List<Serie> listaSeries;
+	
+	public CtrSerie() {
+		listaSeries = new ArrayList<>();
+	}
+	
+	public void adicionarSerie() {
+		
+	}
+	
+	public void alterarSerie(Serie s) {
+		
+	}
+	
+	public Serie excluirSerie(Serie s) {
+		return s;
+	}
+	
+	public List<Serie> consultarSerie() {
+		return listaSeries;
+	}
+	
+	public void contarSeries() {
+		
+	}
+	
+}

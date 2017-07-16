@@ -1,0 +1,235 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import control.CtrObra;
+import control.CtrObraEscrita;
+import model.Obra;
+import obrachildren.ObraEscrita;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTable;
+
+public class TelaObraEscrita extends Tela implements ActionListener, ListSelectionListener {
+
+	private JPanel contentPane;
+	private JTextField txtId;
+	private JTextField txtTitulo;
+	private JTextField txtAno;
+	private JTextField txtGenero;
+	private JTextField txtTituloTraduzido;
+	private JTextField txtAutor;
+	private JTextField txtTipoObraEscrita;
+	private JTextField txtEditora;
+	private JTable tableObraEscrita;
+	private ObraEscrita obraEscrita;
+	private Obra obra;
+	private CtrObra controleObra;
+	private CtrObraEscrita controleObraEscrita;
+	private JScrollPane rolagem;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaObraEscrita() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setColumns(10);
+		panel.add(txtId);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		txtTitulo = new JTextField();
+		txtTitulo.setColumns(10);
+		panel.add(txtTitulo);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		txtAno = new JTextField();
+		txtAno.setColumns(10);
+		panel.add(txtAno);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		txtGenero = new JTextField();
+		txtGenero.setColumns(10);
+		panel.add(txtGenero);
+		
+		JLabel lblTitulotraduzido = new JLabel("T\u00EDtuloTraduzido");
+		panel.add(lblTitulotraduzido);
+		
+		txtTituloTraduzido = new JTextField();
+		txtTituloTraduzido.setColumns(10);
+		panel.add(txtTituloTraduzido);
+		
+		JLabel lblAutor = new JLabel("Autor");
+		panel.add(lblAutor);
+		
+		txtAutor = new JTextField();
+		txtAutor.setColumns(10);
+		panel.add(txtAutor);
+		
+		JLabel lblTipoObraEscrita = new JLabel("Tipo de Obra Escrita");
+		panel.add(lblTipoObraEscrita);
+		
+		txtTipoObraEscrita = new JTextField();
+		txtTipoObraEscrita.setColumns(10);
+		panel.add(txtTipoObraEscrita);
+		
+		JLabel lblEditora = new JLabel("Editora");
+		panel.add(lblEditora);
+		
+		txtEditora = new JTextField();
+		txtEditora.setColumns(10);
+		panel.add(txtEditora);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		JPanel panelTable = new JPanel();
+		contentPane.add(panelTable, BorderLayout.CENTER);
+		
+		obraEscrita = new ObraEscrita();
+		controleObraEscrita = new CtrObraEscrita();
+		obra = new Obra();
+		controleObra = new CtrObra();
+		
+		rolagem = new JScrollPane();
+		tableObraEscrita = new JTable(controleObraEscrita);
+		tableObraEscrita.getSelectionModel().addListSelectionListener(this);
+		rolagem.getViewport().add(tableObraEscrita); // Esta linha
+		add(rolagem, BorderLayout.CENTER);
+		
+		controleObraEscrita.consultarObraEscrita(txtTitulo.getText());
+		atualizarTabela();
+		
+	}
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		txtId.setText("");
+		txtTitulo.setText("");
+		txtAno.setText("");
+		txtGenero.setText("");
+		txtTituloTraduzido.setText("");
+		txtAutor.setText("");
+		txtTipoObraEscrita.setText("");
+		txtEditora.setText("");
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		int linha = tableObraEscrita.getSelectedRow();
+		ObraEscrita oe = controleObraEscrita.retornarLinha(linha);
+		obraEscritaParaTela(oe);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			obraEscrita = new ObraEscrita();
+			obraEscrita = telaParaObraEscrita(obraEscrita);
+			controleObra.adicionarObra(obra);
+			controleObraEscrita.adicionarObraEscrita(obraEscrita);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			obraEscrita = new ObraEscrita();
+			obraEscrita = telaParaObraEscrita(obraEscrita);
+			controleObra.adicionarObra(obra);
+			controleObraEscrita.alterarObraEscrita(obraEscrita);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			//obraEscrita = new ObraEscrita();
+			//obraEscrita = telaParaObraEscrita(obraEscrita);
+			//controleObra.consultarObra(obra.getTitulo());
+			controleObraEscrita.consultarObraEscrita(to.txtTitulo.getText());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			obraEscrita = new ObraEscrita();
+			obraEscrita = telaParaObraEscrita(obraEscrita);
+			obra = controleObra.excluirObra(obra);
+			obraEscrita = controleObraEscrita.excluirObraEscrita(obraEscrita);
+			limparTela();
+			
+		}
+	}
+	
+	public void atualizarTabela() {
+		tableObraEscrita.invalidate();
+		tableObraEscrita.revalidate();
+		tableObraEscrita.repaint();
+	}
+
+	public ObraEscrita telaParaObraEscrita(ObraEscrita oE) {
+		oE.setId(Integer.parseInt(txtId.getText()));
+		oE.setTitulo(txtTitulo.getText());
+		oE.setAno(Integer.parseInt(txtAno.getText()));
+		oE.setGenero(txtGenero.getText());
+		oE.setTituloTraduzido(txtTituloTraduzido.getText());
+		oE.setAutor(txtAutor.getText());
+		oE.setTipoObraEscrita(txtTipoObraEscrita.getText());
+		oE.setEditora(txtEditora.getText());
+		
+		return oE;
+	}
+	
+	public void obraEscritaParaTela(ObraEscrita oE) {
+		txtId.setText(String.valueOf(oE.getId()));
+		txtTitulo.setText(oE.getTitulo());
+		txtAno.setText(String.valueOf(oE.getAno()));
+		txtGenero.setText(oE.getGenero());
+		txtTituloTraduzido.setText(oE.getTituloTraduzido());
+		txtAutor.setText(oE.getAutor());
+		txtTipoObraEscrita.setText(oE.getTipoObraEscrita());
+		txtEditora.setText(oE.getEditora());
+	}
+
+}

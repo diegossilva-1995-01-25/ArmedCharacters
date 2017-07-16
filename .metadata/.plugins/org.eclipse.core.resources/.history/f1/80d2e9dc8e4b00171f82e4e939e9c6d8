@@ -1,0 +1,42 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Obra;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrObra {
+	private Obra obra;
+	private List<Obra> listaObras;
+	
+	public CtrObra() {
+		listaObras = new ArrayList<>();
+	}
+	
+	public void adicionarObra() {
+		
+	}
+	
+	public void alterarObra(Obra o) {
+		
+	}
+	
+	public Obra excluirObra(Obra o) {
+		return o;
+	}
+	
+	public List<Obra> consultarArma() {
+		return listaObras;
+	}
+	
+	public void contarObras() {
+		
+	}
+	
+	
+}

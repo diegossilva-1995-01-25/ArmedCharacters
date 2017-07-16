@@ -1,0 +1,127 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTable;
+
+public class TelaObraEscrita extends Tela implements ActionListener, ListSelectionListener {
+
+	private JPanel contentPane;
+	private JTextField txtId;
+	private JTextField txtTitulo;
+	private JTextField txtAno;
+	private JTextField txtGenero;
+	private JTextField txtTituloTraduzido;
+	private JTextField txtAutor;
+	private JTextField txtTipoObraEscrita;
+	private JTextField txtEditora;
+	private JTable tableObraEscrita;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaObraEscrita() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setColumns(10);
+		panel.add(txtId);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		txtTitulo = new JTextField();
+		txtTitulo.setColumns(10);
+		panel.add(txtTitulo);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		txtAno = new JTextField();
+		txtAno.setColumns(10);
+		panel.add(txtAno);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		txtGenero = new JTextField();
+		txtGenero.setColumns(10);
+		panel.add(txtGenero);
+		
+		JLabel lblTitulotraduzido = new JLabel("T\u00EDtuloTraduzido");
+		panel.add(lblTitulotraduzido);
+		
+		txtTituloTraduzido = new JTextField();
+		txtTituloTraduzido.setColumns(10);
+		panel.add(txtTituloTraduzido);
+		
+		JLabel lblAutor = new JLabel("Autor");
+		panel.add(lblAutor);
+		
+		txtAutor = new JTextField();
+		txtAutor.setColumns(10);
+		panel.add(txtAutor);
+		
+		JLabel lblTipoObraEscrita = new JLabel("Tipo de Obra Escrita");
+		panel.add(lblTipoObraEscrita);
+		
+		txtTipoObraEscrita = new JTextField();
+		txtTipoObraEscrita.setColumns(10);
+		panel.add(txtTipoObraEscrita);
+		
+		JLabel lblEditora = new JLabel("Editora");
+		panel.add(lblEditora);
+		
+		txtEditora = new JTextField();
+		txtEditora.setColumns(10);
+		panel.add(txtEditora);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		JPanel panelTable = new JPanel();
+		contentPane.add(panelTable, BorderLayout.CENTER);
+		
+		tableObraEscrita = new JTable();
+		panelTable.add(tableObraEscrita);
+	}
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

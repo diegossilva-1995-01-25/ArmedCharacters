@@ -1,0 +1,42 @@
+package control;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.DAOConexaoSingleton;
+import model.Obra;
+import obrachildren.obravisualchildren.Filme;
+
+public class CtrObra {
+	
+	private Obra obra;
+	private List<Obra> listaObra;
+	private Connection conex;
+	
+	public CtrObra() {
+		listaObra = new ArrayList<>();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	public void adicionarFilme(Obra o) {
+		
+	}
+	
+	public void alterarFilme(Obra o) {
+		
+	}
+	
+	public Obra excluirFilme(Obra o) {
+		return o;
+	}
+	
+	public List<Obra> consultarFilme(String titulo) {
+		return listaObra;
+	}
+	
+	public void contarFilmes() {
+		
+	}
+	
+}

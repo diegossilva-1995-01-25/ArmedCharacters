@@ -1,0 +1,14 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+
+public class PanelSerie extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelSerie() {
+
+	}
+
+}

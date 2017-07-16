@@ -1,0 +1,38 @@
+package obrachildren.obravisualchildren;
+
+import obrachildren.ObraVisual;
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class Serie extends ObraVisual {
+	private int numEpisodios;
+	private int numTemporadas;
+	private String tipoSerire;
+	
+	public int getNumEpisodios() {
+		return numEpisodios;
+	}
+	
+	public int getNumTemporadas() {
+		return numTemporadas;
+	}
+	
+	public String getTipoSerire() {
+		return tipoSerire;
+	}
+	
+	public void setNumEpisodios(int numEpisodios) {
+		this.numEpisodios = numEpisodios;
+	}
+	
+	public void setNumTemporadas(int numTemporadas) {
+		this.numTemporadas = numTemporadas;
+	}
+	
+	public void setTipoSerire(String tipoSerire) {
+		this.tipoSerire = tipoSerire;
+	}
+	
+}

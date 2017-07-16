@@ -1,0 +1,15 @@
+package control;
+
+import model.Arma;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrArma {
+	private Arma arma;
+	
+	
+	
+}

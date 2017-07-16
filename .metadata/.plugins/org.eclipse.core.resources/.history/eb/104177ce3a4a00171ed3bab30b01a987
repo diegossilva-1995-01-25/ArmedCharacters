@@ -1,0 +1,11 @@
+package obrachildren.obravisualchildren;
+
+import obrachildren.ObraVisual;
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class Filme extends ObraVisual {
+	
+}

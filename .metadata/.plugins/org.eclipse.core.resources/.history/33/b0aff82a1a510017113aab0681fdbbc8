@@ -1,0 +1,226 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import obrachildren.obravisualchildren.Game;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTable;
+
+public class TelaGame extends Tela implements ActionListener, ListSelectionListener {
+
+	private JPanel contentPane;
+	private JTextField txtId;
+	private JTextField txtTitulo;
+	private JTextField txtAno;
+	private JTextField txtGenero;
+	private JTextField txtDistribuidora;
+	private JTextField txtFranquia;
+	private JTextField txtPlataformas;
+	private JTextField txtCriador;
+	private JTable tableGame;
+	private JTextField txtDesenvolvedoras;
+
+	/**
+	 * Create the frame.
+	 */
+	public TelaGame() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setColumns(10);
+		panel.add(txtId);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		txtTitulo = new JTextField();
+		txtTitulo.setColumns(10);
+		panel.add(txtTitulo);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		txtAno = new JTextField();
+		txtAno.setColumns(10);
+		panel.add(txtAno);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		txtGenero = new JTextField();
+		txtGenero.setColumns(10);
+		panel.add(txtGenero);
+		
+		JLabel lblDistribuidora = new JLabel("Distribuidora");
+		panel.add(lblDistribuidora);
+		
+		txtDistribuidora = new JTextField();
+		txtDistribuidora.setColumns(10);
+		panel.add(txtDistribuidora);
+		
+		JLabel lblFranquia = new JLabel("Franquia");
+		panel.add(lblFranquia);
+		
+		txtFranquia = new JTextField();
+		txtFranquia.setColumns(10);
+		panel.add(txtFranquia);
+		
+		JLabel lblPlataformas = new JLabel("Plataformas");
+		panel.add(lblPlataformas);
+		
+		txtPlataformas = new JTextField();
+		txtPlataformas.setColumns(10);
+		panel.add(txtPlataformas);
+		
+		JLabel lblCriador = new JLabel("Criador");
+		panel.add(lblCriador);
+		
+		txtCriador = new JTextField();
+		txtCriador.setColumns(10);
+		panel.add(txtCriador);
+		
+		JLabel lblDesenvolvedoras = new JLabel("Desenvolvedoras");
+		panel.add(lblDesenvolvedoras);
+		
+		txtDesenvolvedoras = new JTextField();
+		txtDesenvolvedoras.setColumns(10);
+		panel.add(txtDesenvolvedoras);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		JPanel panelTable = new JPanel();
+		contentPane.add(panelTable, BorderLayout.CENTER);
+		
+		tableGame = new JTable();
+		panelTable.add(tableGame);
+	}
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			game = new Game();
+			game = telaParaGame(game);
+			controleObra.adicionarObra(obra);
+			controleGame.adicionarGame(game);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			game = new Game();
+			game = telaParaGame(game);
+			controleObra.alterarObra(obra);
+			controleGame.alterarGame(game);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			//game = new Game();
+			//game = telaParaGame(game);
+			//controleObra.consultarObra(obra.getTitulo());
+			controleGame.consultarGame(txtTitulo.getText());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			game = new Game();
+			game = telaParaGame(game);
+			obra = controleObra.excluirObra(obra);
+			game = controleGame.excluirGame(game);
+			limparTela();
+			
+		}
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		int linha = tableGame.getSelectedRow();
+		Game g = controleGame.retornarLinha(linha);
+		gameParaTela(g);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		txtId.setText("");
+		txtTitulo.setText("");
+		txtAno.setText("");
+		txtGenero.setText("");
+		txtDistribuidora.setText("");
+		txtFranquia.setText("");
+		txtPlataformas.setText("");
+		txtCriador.setText("");
+		txtDesenvolvedoras.setText("");
+	}
+	
+	public void atualizarTabela() {
+		tableGame.invalidate();
+		tableGame.revalidate();
+		tableGame.repaint();
+	}
+	
+	public Game telaParaGame(Game g) {
+		g.setId(Integer.parseInt(txtId.getText()));
+		g.setTitulo(txtTitulo.getText());
+		g.setAno(Integer.parseInt(txtAno.getText()));
+		g.setGenero(txtGenero.getText());
+		g.setDistribuidora(txtDistribuidora.getText());
+		g.setFranquia(txtFranquia.getText());
+		g.setPlataformas(txtPlataformas.getText());
+		g.setCriador(txtCriador.getText());
+		g.setDesenvolvedoras(txtDesenvolvedoras.getText());
+		
+		return g;
+	}
+	
+	public void gameParaTela(Game g) {
+		txtId.setText(String.valueOf(g.getId()));
+		txtTitulo.setText(g.getTitulo());
+		txtAno.setText(String.valueOf(g.getAno()));
+		txtGenero.setText(g.getGenero());
+		txtDistribuidora.setText(g.getDistribuidora());
+		txtFranquia.setText(g.getFranquia());
+		txtPlataformas.setText(g.getPlataformas());
+		txtCriador.setText(g.getCriador());
+		txtDesenvolvedoras.setText(g.getDesenvolvedoras());
+	}
+	
+}

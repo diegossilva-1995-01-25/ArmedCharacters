@@ -1,0 +1,68 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import list.ListPersonagensObra;
+import model.Obra;
+import model.Personagem;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrObra implements ListPersonagensObra {
+	private Obra obra;
+	private List<Obra> listaObras;
+	
+	public CtrObra() {
+		listaObras = new ArrayList<>();
+	}
+	
+	public void adicionarObra() {
+		
+	}
+	
+	public void alterarObra(Obra o) {
+		
+	}
+	
+	public Obra excluirObra(Obra o) {
+		return o;
+	}
+	
+	public List<Obra> consultarObras() {
+		return listaObras;
+	}
+	
+	public void contarObras() {
+		
+	}
+
+	@Override
+	public List<Personagem> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Personagem p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String tituloObra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Personagem removerArma(Personagem p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

@@ -1,0 +1,153 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+
+import control.CtrFilme;
+import control.CtrGame;
+import control.CtrObra;
+import model.Obra;
+import obrachildren.obravisualchildren.Game;
+import view.TelaObra;
+
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class PanelGame extends PanelObraVisual implements ActionListener {
+	private JTextField txtPlataformas;
+	private JTextField txtCriador;
+	private JTextField txtDesenvolvedoras;
+	private JTable tableGame;
+	
+	private TelaObra to;
+	private PanelObraVisual pOV;
+	private Game game;
+	private Obra obra;
+	private CtrGame controleGame;
+	private CtrObra controleObra;
+	
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelGame() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblPlataformas = new JLabel("Plataformas");
+		panel.add(lblPlataformas);
+		
+		txtPlataformas = new JTextField();
+		panel.add(txtPlataformas);
+		txtPlataformas.setColumns(10);
+		
+		JLabel lblCriador = new JLabel("Criador");
+		panel.add(lblCriador);
+		
+		txtCriador = new JTextField();
+		txtCriador.setColumns(10);
+		panel.add(txtCriador);
+		
+		JLabel lblDesenvolvedoras = new JLabel("Desenvolvedoras");
+		panel.add(lblDesenvolvedoras);
+		
+		txtDesenvolvedoras = new JTextField();
+		txtDesenvolvedoras.setColumns(10);
+		panel.add(txtDesenvolvedoras);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tableGame = new JTable();
+		add(tableGame, BorderLayout.CENTER);
+		
+		tO = new TelaObra();
+		pOV = new PanelObraVisual();
+		controleObra = new CtrObra();
+		controleGame = new CtrGame();
+
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			game = new Game();
+			game = telaParaGame(game);
+			//controleObra.adicionarObra(obra);
+			controleGame.adicionarGame(game);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			game = new Game();
+			game = telaParaGame(game);
+			//controleObra.alterarObra(obra);
+			controleGame.alterarGame(game);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			game = new Game();
+			game = telaParaGame(game);
+			//controleObra.consultarObra(obra.getTitulo);
+			controleGame.consultarGame(game.getTitulo());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			game = new Game();
+			game = telaParaGame(game);
+			//obra = controleObra.exclirObra(obra);
+			game = controleGame.excluirGame(game);
+			limparTela();
+			
+		}
+	}
+
+	public void atualizarTabela() {
+		tableGame.invalidate();
+		tableGame.revalidate();
+		tableGame.repaint();
+	}
+	
+	public Game telaParaGame(Game g) {
+		
+		
+		return g;
+	}
+	
+	public void gameParaTela(Game g) {
+		
+	}
+	
+	public void limparTela() {
+		to.txtId.setText("");
+		to.txtTitulo.setText("");
+		to.txtAno.setText("");
+		to.txtGenero.setText("");
+		txtDistribuidora.setText("");
+		txtFranquia.setText("");
+		txtTituloDublado.setText("");
+		txtDiretor.setText("");
+	}
+	
+}

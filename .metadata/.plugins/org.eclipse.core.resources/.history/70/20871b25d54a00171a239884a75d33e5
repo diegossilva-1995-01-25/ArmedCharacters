@@ -1,0 +1,17 @@
+package view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JInternalFrame;
+
+public class TelaObra extends Tela {
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaObra() {
+		setBounds(100, 100, horizontal, vertical);
+
+	}
+
+}

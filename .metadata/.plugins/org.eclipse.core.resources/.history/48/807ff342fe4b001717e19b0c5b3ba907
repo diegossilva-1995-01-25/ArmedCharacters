@@ -1,0 +1,49 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+
+public class PanelObraVisual extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelObraVisual() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panel.add(lblNewLabel);
+		
+		textField = new JTextField();
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JLabel label = new JLabel("New label");
+		panel.add(label);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		panel.add(textField_1);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
+		panel.add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
+		panel.add(rdbtnNewRadioButton_1);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
+		panel.add(rdbtnNewRadioButton_2);
+
+	}
+
+}

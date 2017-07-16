@@ -1,0 +1,14 @@
+package view;
+
+public class TelaObra extends Tela {
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaObra() {
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+
+	}
+
+}

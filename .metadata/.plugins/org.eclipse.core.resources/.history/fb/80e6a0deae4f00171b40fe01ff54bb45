@@ -1,0 +1,86 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.DAOConexaoSingleton;
+import model.Obra;
+import obrachildren.obravisualchildren.Filme;
+
+public class CtrObra {
+	
+	private Obra obra;
+	private List<Obra> listaObras;
+	private Connection conex;
+	
+	public CtrObra() {
+		listaObras = new ArrayList<>();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	public void adicionarObra(Obra o) {
+		String sql = "INSERT INTO obra (id, titulo, ano, genero) "
+				+ "VALUES (?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, o.getId());
+			statem.setString(2, o.getTitulo());
+			statem.setInt(3, o.getAno());
+			statem.setString(4, o.getGenero());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void alterarObra(Obra o) {
+		String sql = "UPDATE obra SET id = ?, titulo = ?, ano = ?, genero = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, o.getId());
+			statem.setString(2, o.getTitulo());
+			statem.setInt(3, o.getAno());
+			statem.setString(4, o.getGenero());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Obra excluirObra(Obra o) {
+		String sql = "DELETE FROM obra WHERE id = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, o.getId());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return o;
+	}
+	
+	public List<Obra> consultarObra(String titulo) {
+		return listaObras;
+	}
+	
+	public int contarObras() {
+		int contagem = 0;
+		
+		
+		
+		return contagem;
+	}
+	
+	
+	
+}

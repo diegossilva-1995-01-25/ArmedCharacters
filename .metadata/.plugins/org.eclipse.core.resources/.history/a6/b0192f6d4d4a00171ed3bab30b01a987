@@ -1,0 +1,36 @@
+package list;
+
+import java.awt.List;
+import java.util.ArrayList;
+
+import model.Arma;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class ListArmasCalibre {
+	List<> listaArmasPorCalibre;
+	
+	public ListArmasCalibre() {
+		listaArmasPorCalibre = new ArrayList<Arma>();
+	}
+	
+	public ListArmasCalibre instanciarLista() {
+		
+	}
+	
+	public void adicionarArma(Arma a) {
+		
+	}
+	
+	public void listarArmas() {
+		
+	}
+	
+	public Arma removerArma(Arma a) {
+		return a;
+	}
+	
+}

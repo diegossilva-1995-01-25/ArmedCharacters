@@ -1,0 +1,109 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JDesktopPane;
+
+public class Menu extends MenuConstrutor implements ActionListener {
+
+	private JPanel contentPane;
+
+	/**
+	 * Create the frame.
+	 */
+	public Menu() {
+		setTitle("Armed Characters - Menu Principal");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(5, 5, 800, 800);
+		
+		JMenuBar barraMenu = new JMenuBar();
+		setJMenuBar(barraMenu);
+		
+		JMenu menuTelas = new JMenu("Telas");
+		barraMenu.add(menuTelas);
+		
+		JMenu menuItemArma = new JMenu("Arma");
+		menuTelas.add(menuItemArma);
+		
+		JMenu menuItemCalibre = new JMenu("Calibre");
+		menuTelas.add(menuItemCalibre);
+		
+		JMenu menuItemFabricante = new JMenu("Fabricante");
+		menuTelas.add(menuItemFabricante);
+		
+		JMenu menuItemObra = new JMenu("Obra");
+		menuTelas.add(menuItemObra);
+		
+		JMenu menuItemPersonagem = new JMenu("Personagem");
+		menuTelas.add(menuItemPersonagem);
+		
+		JMenu menuSistema = new JMenu("Sistema");
+		
+		
+		barraMenu.add(menuSistema);
+		
+		JMenu menuItemSair = new JMenu("Sair");
+		menuItemSair.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent eventoMouse) {
+				System.exit(0);
+			}
+		});
+		menuSistema.add(menuItemSair);
+		
+		
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JDesktopPane painelTelas = new JDesktopPane();
+		contentPane.add(painelTelas, BorderLayout.CENTER);
+	}
+	
+	public void criarTelaC(TelaCalibre tCal) {
+		
+	}
+	
+	public void criarTelaA(TelaArma tArma) {
+		
+	}
+
+	public void criarTelaP(TelaPersonagem tPer) {
+		
+	}
+	
+	public void criarTelaO(TelaObra tObra) {
+		
+	}
+	
+	public void criarTelaF(TelaFabricante tFab) {
+		
+	}
+
+	@Override
+	public void exibirTela(Tela t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String comando = e.getActionCommand();
+		
+		
+		
+	}
+
+}

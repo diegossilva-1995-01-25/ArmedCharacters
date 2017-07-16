@@ -1,0 +1,37 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import obrachildren.obravisualchildren.Filme;
+
+public class CtrFilme {
+
+	private Filme filme;
+	private List<Filme> listaFilmes;
+	
+	public CtrFilme() {
+		listaFilmes = new ArrayList<>();
+	}
+	
+	public void adicionarFilme() {
+		
+	}
+	
+	public void alterarFilme(Filme f) {
+		
+	}
+	
+	public Filme excluirFilme(Filme f) {
+		return f;
+	}
+	
+	public List<Filme> consultarFilme() {
+		return listaFilmes;
+	}
+	
+	public void contarFilmes() {
+		
+	}
+	
+}

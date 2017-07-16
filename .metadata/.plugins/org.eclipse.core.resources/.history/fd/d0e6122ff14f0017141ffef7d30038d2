@@ -1,0 +1,124 @@
+package control;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
+
+import dao.DAOConexaoSingleton;
+import list.ListPersonagensObra;
+import model.Personagem;
+import obrachildren.obravisualchildren.Game;
+
+public class CtrGame implements ListPersonagensObra, TableModel {
+
+	private Game Game;
+	private List<Game> listaGames;
+	private Connection conex;
+	
+	public CtrGame() {
+		listaGames = new ArrayList<>();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	public void adicionarGame(Game g) {
+		
+	}
+	
+	public void alterarGame(Game g) {
+		
+	}
+	
+	public Game excluirGame(Game g) {
+		return g;
+	}
+	
+	public List<Game> consultarGame(String titulo) {
+		return listaGames;
+	}
+	
+	public void contarGames() {
+		
+	}
+
+	@Override
+	public List<Personagem> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Personagem p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String tituloObra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Personagem removerArma(Personagem p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getColumnName(int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void removeTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

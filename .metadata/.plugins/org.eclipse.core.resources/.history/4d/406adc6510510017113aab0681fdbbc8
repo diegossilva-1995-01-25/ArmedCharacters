@@ -1,0 +1,129 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class TelaSerie extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTable tableSerie;
+	
+	
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaSerie() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		panel.add(textField);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		panel.add(textField_1);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		panel.add(textField_2);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		panel.add(textField_3);
+		
+		JLabel lblDistribuidora = new JLabel("Distribuidora");
+		panel.add(lblDistribuidora);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		panel.add(textField_4);
+		
+		JLabel lblFranquia = new JLabel("Franquia");
+		panel.add(lblFranquia);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		panel.add(textField_5);
+		
+		JLabel lblNumEpisodios = new JLabel("N\u00FAmero de Epis\u00F3dios");
+		panel.add(lblNumEpisodios);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		panel.add(textField_6);
+		
+		JLabel lblNumTemporadas = new JLabel("N\u00FAmero de Temporadas");
+		panel.add(lblNumTemporadas);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		panel.add(textField_7);
+		
+		JLabel lblTipoSerie = new JLabel("Tipo de S\u00E9rie");
+		panel.add(lblTipoSerie);
+		
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		panel.add(textField_8);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		JPanel panelTable = new JPanel();
+		contentPane.add(panelTable, BorderLayout.CENTER);
+		
+		tableSerie = new JTable();
+		panelTable.add(tableSerie);
+	}
+
+}

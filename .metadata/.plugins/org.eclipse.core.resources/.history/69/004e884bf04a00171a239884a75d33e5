@@ -1,0 +1,50 @@
+package model;
+
+import list.ListArmasCalibre;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class Calibre {
+	private String nome;
+	private String String;
+	private double diametroProjetil;
+	private double comprimento;
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getString() {
+		return String;
+	}
+	
+	public double getDiametroProjetil() {
+		return diametroProjetil;
+	}
+	
+	public double getComprimento() {
+		return comprimento;
+	}
+	
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setString(String string) {
+		String = string;
+	}
+	
+	public void setDiametroProjetil(double diametroProjetil) {
+		this.diametroProjetil = diametroProjetil;
+	}
+	
+	public void setComprimento(double comprimento) {
+		this.comprimento = comprimento;
+	}
+	
+	
+}

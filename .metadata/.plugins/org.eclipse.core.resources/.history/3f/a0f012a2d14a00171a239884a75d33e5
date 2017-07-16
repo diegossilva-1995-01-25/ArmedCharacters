@@ -1,0 +1,78 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Menu extends MenuConstrutor implements ActionListener {
+
+	private JPanel contentPane;
+
+	/**
+	 * Create the frame.
+	 */
+	public Menu() {
+		setTitle("Armed Characters - Menu Principal");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(5, 5, 800, 800);
+		
+		JMenuBar barraMenu = new JMenuBar();
+		setJMenuBar(barraMenu);
+		
+		JMenu menuTelas = new JMenu("Telas");
+		barraMenu.add(menuTelas);
+		
+		JMenu menuSair = new JMenu("Sair");
+		
+		barraMenu.add(menuSair);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
+	}
+	
+	public void criarTelaC(TelaCalibre tCal) {
+		
+	}
+	
+	public void criarTelaA(TelaArma tArma) {
+		
+	}
+
+	public void criarTelaP(TelaPersonagem tPer) {
+		
+	}
+	
+	public void criarTelaO(TelaObra tObra) {
+		
+	}
+	
+	public void criarTelaF(TelaFabricante tFab) {
+		
+	}
+
+	@Override
+	public void exibirTela(Tela t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String comando = e.getActionCommand();
+		
+		if("Sair".equals(comando)) {
+			System.exit(0);
+		}
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package control;
+
+import model.Personagem;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrPersonagem {
+	private Personagem personagem;
+	
+	
+	
+}

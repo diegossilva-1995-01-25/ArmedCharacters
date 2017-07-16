@@ -1,0 +1,307 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
+
+import dao.DAOConexaoSingleton;
+import list.ListArmasPersonagem;
+import model.Arma;
+import model.Fabricante;
+import model.Personagem;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrPersonagem implements ListArmasPersonagem, TableModel {
+	private Personagem personagem;
+	private List<Personagem> listaPersonagens;
+	private SimpleDateFormat dataSimples;
+	private Connection conex;
+	
+	public CtrPersonagem() {
+		listaPersonagens = new ArrayList<>();
+		dataSimples = new SimpleDateFormat("yyyy-MM-dd");
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+		personagem = new Personagem();
+	}
+	
+	public void adicionarPersonagem(Personagem p) {
+		String sql = "INSERT INTO personagem (id, nome, dataNasc, origem, corOlhos, "
+				+ "corCabelo, raca, etnia, tipoPersonagem, biotipo, obra) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, p.getId());
+			statem.setString(2, p.getNome());
+			statem.setString(3, dataSimples.format(p.getDataNasc()));
+			statem.setString(4, p.getOrigem());
+			statem.setString(5, p.getCorOlhos());
+			statem.setString(6, p.getCorCabelo());
+			statem.setString(7, p.getRaca());
+			statem.setString(8, p.getEtnia());
+			statem.setString(9, p.getTipoPersonagem());
+			statem.setString(10, p.getBiotipo());
+			statem.setInt(11, p.getObra());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void alterarPersonagem(Personagem p) {
+		String sql = "UPDATE personagem SET id = ?, nome = ?, dataNasc = ?, origem = ?, "
+				+ "corOlhos = ?, corCabelo = ?, raca = ?, etnia = ?, tipoPersonagem = ?, "
+				+ "biotipo = ?, obra = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, p.getId());
+			statem.setString(2, p.getNome());
+			statem.setString(3, dataSimples.format(p.getDataNasc()));
+			statem.setString(4, p.getOrigem());
+			statem.setString(5, p.getCorOlhos());
+			statem.setString(6, p.getCorCabelo());
+			statem.setString(7, p.getRaca());
+			statem.setString(8, p.getEtnia());
+			statem.setString(9, p.getTipoPersonagem());
+			statem.setString(10, p.getBiotipo());
+			statem.setInt(11, p.getObra());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public Personagem excluirPersonagem(Personagem p) {
+		String sql = "DELETE FROM personagem WHERE id = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, p.getId());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return p;
+	}
+	
+	public List<Personagem> consultarPersonagem(String nome) {
+		listaPersonagens = new ArrayList<Personagem>();
+		String sql = "SELECT * FROM personagem WHERE nome LIKE ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setString(1, "%" + nome + "%");
+			ResultSet rs = statem.executeQuery();
+			
+			while(rs.next()) {
+				Personagem p = new Personagem();
+				
+				p.setId(rs.getInt("id"));
+				p.setNome(rs.getString("nome"));
+				p.setDataNasc(rs.getDate("dataNasc"));
+				p.setOrigem(rs.getString("origem"));
+				p.setCorOlhos(rs.getString("corOlhos"));
+				p.setCorCabelo(rs.getString("corCabelo"));
+				p.setRaca(rs.getString("raca"));
+				p.setEtnia(rs.getString("etnia"));
+				p.setTipoPersonagem(rs.getString("tipoPersonagem"));
+				p.setBiotipo(rs.getString("biotipo"));
+				p.setObra(rs.getInt("obra"));
+				listaPersonagens.add(p);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listaPersonagens;
+	}
+	
+	public int contarPersonagems() {
+		int contagem = 0;
+		
+		
+		
+		return contagem;
+	}
+
+	@Override
+	public List<Arma> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Arma a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String nomePersonagem) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Arma removerArma(Arma a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		// TODO Auto-generated method stub
+		switch (columnIndex) {
+			
+			case 0: return Integer.class;
+			case 1: return String.class;
+			case 2: return String.class;
+			case 3: return String.class;
+			case 4: return String.class;
+			case 5: return String.class;
+			case 6: return String.class;
+			case 7: return String.class;
+			case 8: return String.class;
+			case 9: return String.class;
+			case 10: return Integer.class;
+			
+		}
+	
+		return String.class;
+	}
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return 11;
+	}
+
+	@Override
+	public String getColumnName(int columnIndex) {
+		// TODO Auto-generated method stub
+		switch (columnIndex) {
+		
+			case 0: return "Id";
+			case 1: return "Nome";
+			case 2: return "Data de Nascimento";
+			case 3: return "Origem";
+			case 4: return "Cor de Olhos";
+			case 5: return "Cor de Cabelo";
+			case 6: return "Raça";
+			case 7: return "Etnia";
+			case 8: return "Tipo de Personagem";
+			case 9: return "Biotipo";
+			case 10: return "Obra";
+		
+		}
+	
+		return "";
+	
+	}
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return listaPersonagens.size();
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		Personagem p = listaPersonagens.get(rowIndex);
+		
+		
+		switch (columnIndex) {
+		
+			case 0: return p.getId();
+			case 1: return p.getNome();
+			case 2: return p.getDataNasc();
+			case 3: return p.getOrigem();
+			case 4: return p.getCorOlhos();
+			case 5: return p.getCorCabelo();
+			case 6: return p.getRaca();
+			case 7: return p.getEtnia();
+			case 8: return p.getTipoPersonagem();
+			case 9: return p.getBiotipo();
+			case 10: return p.getObra();
+		
+		}
+	
+		return "";
+		
+	}
+
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void removeTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Personagem retornarLinha(int linha) {
+		return listaPersonagens.get(linha);
+	}
+	
+	public List<String> popularPersonagem(String nome) {
+		List<String> lista = new ArrayList<String>();
+		String sql = "SELECT id, nome FROM personagem";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			ResultSet rs = statem.executeQuery();
+			
+			while(rs.next()) {
+				Personagem p = new Personagem();
+				
+				p.setId(rs.getInt("id"));
+				p.setNome(rs.getString("nome"));
+				lista.add(p.getNome().toString());
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return lista;
+	}
+	
+}

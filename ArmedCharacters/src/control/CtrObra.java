@@ -1,0 +1,112 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.DAOConexaoSingleton;
+import model.Obra;
+import obrachildren.obravisualchildren.Filme;
+
+public class CtrObra {
+	
+	private Obra obra;
+	private List<Obra> listaObras;
+	private Connection conex;
+	private String pass;
+	
+	public CtrObra(String senha) {
+		pass = senha;
+		listaObras = new ArrayList<>();
+		conex = DAOConexaoSingleton.getInstanciaUnica(pass).getConexao();
+	}
+	
+	public void adicionarObra(Obra o) {
+		String sql = "INSERT INTO obra (id, titulo, ano, genero) "
+				+ "VALUES (?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, o.getId());
+			statem.setString(2, o.getTitulo());
+			statem.setInt(3, o.getAno());
+			statem.setString(4, o.getGenero());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void alterarObra(Obra o) {
+		String sql = "UPDATE obra SET id = ?, titulo = ?, ano = ?, genero = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, o.getId());
+			statem.setString(2, o.getTitulo());
+			statem.setInt(3, o.getAno());
+			statem.setString(4, o.getGenero());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Obra excluirObra(Obra o) {
+		String sql = "DELETE FROM obra WHERE id = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, o.getId());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return o;
+	}
+	
+	public List<Obra> consultarObra(String titulo) {
+		listaObras = new ArrayList<Obra>();
+		String sql = "SELECT * FROM obra WHERE titulo LIKE ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setString(1, "%" + titulo + "%");
+			ResultSet rs = statem.executeQuery();
+			
+			while(rs.next()) {
+				Obra o = new Obra();
+				
+				o.setId(rs.getInt("id"));
+				o.setTitulo(rs.getString("titulo"));
+				o.setAno(rs.getInt("ano"));
+				o.setGenero(rs.getString("genero"));
+				listaObras.add(o);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listaObras;
+	}
+	
+	public int contarObras() {
+		int contagem = 0;
+		
+		
+		
+		return contagem;
+	}
+	
+	
+	
+}

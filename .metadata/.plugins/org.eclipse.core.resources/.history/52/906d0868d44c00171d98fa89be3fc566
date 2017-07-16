@@ -1,0 +1,13 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+
+import view.TelaObra;
+
+public abstract class PanelAbstrato extends JPanel {
+	
+	TelaObra tO = new TelaObra();
+	
+	
+	
+}

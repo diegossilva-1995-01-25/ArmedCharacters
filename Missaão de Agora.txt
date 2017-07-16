@@ -1,0 +1,11 @@
+Implementar as Control para:
+- Obra Escrita;
+- Filme;
+- Série;
+- Game;
+Resolver os problemas destas Controls
+com herança, bem como os das telas
+destas Controls.
+Criar Base de Dados.
+Capturar o ID de obra para ser o mesmo
+da tabela genérica quando o BD for salvar.

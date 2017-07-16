@@ -1,0 +1,131 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class PanelObraVisual extends JPanel implements ActionListener {
+	private JTextField txtDistribuidora;
+	private JTextField txtFranquia;
+	
+	private PanelFilme pF;
+	private PanelGame pG;
+	private PanelSerie pS;
+
+	private JRadioButton rdFilme;
+	private JRadioButton rdGame;
+	private JRadioButton rdSerie;
+	
+	/**
+	 * Create the panel.
+	 */
+	public PanelObraVisual() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblDistribuidora = new JLabel("Distribuidora");
+		panel.add(lblDistribuidora);
+		
+		txtDistribuidora = new JTextField();
+		panel.add(txtDistribuidora);
+		txtDistribuidora.setColumns(10);
+		
+		JLabel lblFranquia = new JLabel("Franquia");
+		panel.add(lblFranquia);
+		
+		txtFranquia = new JTextField();
+		txtFranquia.setColumns(10);
+		panel.add(txtFranquia);
+		
+		rdFilme = new JRadioButton("Filme");
+		rdFilme.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rdFilme.setSelected(true);
+				rdGame.setSelected(false);
+				rdSerie.setSelected(false);
+			}
+		});
+		rdFilme.addActionListener(this);
+		panel.add(rdFilme);
+		
+		rdGame = new JRadioButton("Game");
+		rdGame.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rdFilme.setSelected(false);
+				rdGame.setSelected(true);
+				rdSerie.setSelected(false);
+			}
+		});
+		rdGame.addActionListener(this);
+		panel.add(rdGame);
+		
+		rdSerie = new JRadioButton("S\u00E9rie");
+		rdSerie.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rdFilme.setSelected(false);
+				rdGame.setSelected(false);
+				rdSerie.setSelected(true);
+			}
+		});
+		rdSerie.addActionListener(this);
+		panel.add(rdSerie);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		String origem = e.getActionCommand();
+		
+		if(origem.equals("Filme")) {
+			
+			if(rdFilme.isSelected() == true) {
+				
+				if(pF == null) {
+					pF = new PanelFilme();
+				}
+				
+				if(pG != null) {
+					//this.re
+				}
+				
+				if(pS != null) {
+					
+				}
+				
+				this.add(pF, BorderLayout.CENTER);
+				
+				atualizarTela();
+				
+			}
+			
+		} else if(origem.equals("Game")) {
+			
+		} else if(origem.equals("Série")) {
+			
+		}
+		
+	}
+	
+	private void atualizarTela() {
+		this.invalidate();
+		this.revalidate();
+		this.repaint();
+	}
+
+}

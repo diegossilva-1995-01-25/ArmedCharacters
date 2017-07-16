@@ -1,0 +1,126 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import control.CtrFilme;
+import control.CtrObra;
+import model.Obra;
+import obrachildren.ObraVisual;
+import obrachildren.obravisualchildren.Filme;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+
+public class TelaFilme extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTable table;
+
+	/**
+	 * Create the frame.
+	 */
+	public TelaFilme() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		textField = new JTextField();
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		panel.add(textField_1);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		panel.add(textField_2);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		panel.add(textField_3);
+		
+		JLabel lblDistribuidora = new JLabel("Distribuidora");
+		panel.add(lblDistribuidora);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		panel.add(textField_4);
+		
+		JLabel lblFranquia = new JLabel("Franquia");
+		panel.add(lblFranquia);
+		
+		textField_5 = new JTextField();
+		textField_5.setColumns(10);
+		panel.add(textField_5);
+		
+		JLabel lblTituloDublado = new JLabel("T\u00EDtulo Dublado");
+		panel.add(lblTituloDublado);
+		
+		textField_6 = new JTextField();
+		textField_6.setColumns(10);
+		panel.add(textField_6);
+		
+		JLabel lblDiretor = new JLabel("Diretor");
+		panel.add(lblDiretor);
+		
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
+		panel.add(textField_7);
+		
+		JButton btnNewButton = new JButton("New button");
+		panel.add(btnNewButton);
+		
+		JButton button = new JButton("New button");
+		panel.add(button);
+		
+		JButton button_1 = new JButton("New button");
+		panel.add(button_1);
+		
+		JButton button_2 = new JButton("New button");
+		panel.add(button_2);
+		
+		JPanel panel_1 = new JPanel();
+		contentPane.add(panel_1, BorderLayout.CENTER);
+		
+		table = new JTable();
+		panel_1.add(table);
+	}
+
+}

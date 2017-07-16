@@ -1,0 +1,58 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class PanelFilme extends PanelAbstrato {
+	private JTextField txtTituloDublado;
+	private JTextField txtDiretor;
+	private JTable tableFilme;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelFilme() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblTituloDublado = new JLabel("T\u00EDtulo Dublado");
+		panel.add(lblTituloDublado);
+		
+		txtTituloDublado = new JTextField();
+		panel.add(txtTituloDublado);
+		txtTituloDublado.setColumns(10);
+		
+		JLabel lblDiretor = new JLabel("Diretor");
+		panel.add(lblDiretor);
+		
+		txtDiretor = new JTextField();
+		txtDiretor.setColumns(10);
+		panel.add(txtDiretor);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tableFilme = new JTable();
+		add(tableFilme, BorderLayout.CENTER);
+
+	}
+
+}

@@ -1,0 +1,55 @@
+package model;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class Calibre {
+	private int id;
+	private String nome;
+	private String tipoMunicao;
+	private double diametroProjetil;
+	private double comprimento;
+	
+	public int getId() {
+		return id;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getTipoMunicao() {
+		return tipoMunicao;
+	}
+	
+	public double getDiametroProjetil() {
+		return diametroProjetil;
+	}
+	
+	public double getComprimento() {
+		return comprimento;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+		
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setTipoMunicao(String tipoMunicao) {
+		this.tipoMunicao = tipoMunicao;
+	}
+	
+	public void setDiametroProjetil(double diametroProjetil) {
+		this.diametroProjetil = diametroProjetil;
+	}
+	
+	public void setComprimento(double comprimento) {
+		this.comprimento = comprimento;
+	}
+		
+}

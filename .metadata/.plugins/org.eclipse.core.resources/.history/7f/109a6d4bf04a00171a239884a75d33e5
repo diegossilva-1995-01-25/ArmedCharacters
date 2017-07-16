@@ -1,0 +1,39 @@
+package model;
+
+import list.*;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public abstract class Obra {
+	private String titulo;
+	private int ano;
+	private String genero;
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	
+	public int getAno() {
+		return ano;
+	}
+	
+	public String getGenero() {
+		return genero;
+	}
+	
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+	
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	
+}

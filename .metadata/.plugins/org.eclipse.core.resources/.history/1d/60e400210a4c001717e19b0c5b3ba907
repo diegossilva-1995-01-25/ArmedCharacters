@@ -1,0 +1,107 @@
+package view;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.event.ChangeListener;
+
+import view.obrapanels.PanelObraEscrita;
+import view.obrapanels.PanelObraVisual;
+
+import javax.swing.event.ChangeEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class TelaObra extends Tela implements ChangeListener {
+	private JTextField txtId;
+	private JTextField txtTitulo;
+	private JTextField txtAno;
+	private JTextField txtGenero;
+	
+	private JRadioButton rdObraEscrita;
+	private JRadioButton rdObraVisual;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaObra() {
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+		
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		panel.add(txtId);
+		txtId.setColumns(10);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		txtTitulo = new JTextField();
+		txtTitulo.setColumns(10);
+		panel.add(txtTitulo);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		txtAno = new JTextField();
+		txtAno.setColumns(10);
+		panel.add(txtAno);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		txtGenero = new JTextField();
+		txtGenero.setColumns(10);
+		panel.add(txtGenero);
+		
+		rdObraEscrita = new JRadioButton("Obra Escrita");
+		rdObraEscrita.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rdObraEscrita.setSelected(true);
+			}
+		});
+		rdObraEscrita.setSelected(true);
+		panel.add(rdObraEscrita);
+		
+		rdObraVisual = new JRadioButton("Obra Visual");
+		rdObraVisual.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				rdObraVisual.setSelected(true);
+			}
+		});
+		panel.add(rdObraVisual);
+		
+
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		// TODO Auto-generated method stub
+		String origem = e.getSource().toString();
+		
+		if(origem.equals("rdObraEscrita")) {
+			PanelObraEscrita pOE = new PanelObraEscrita();
+			getContentPane().add(pOE, BorderLayout.CENTER);
+			rdObraVisual.setSelected(false);
+		} else if(origem.equals("rdObraVisual")) {
+			PanelObraVisual pOV = new PanelObraVisual();
+			getContentPane().add(pOV, BorderLayout.CENTER);
+			rdObraEscrita.setSelected(false);
+		}
+		
+	}
+	
+	
+
+}

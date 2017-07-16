@@ -1,0 +1,16 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+
+public class PanelObraEscrita extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelObraEscrita() {
+		setLayout(new GridLayout(0, 2, 5, 5));
+
+	}
+
+}

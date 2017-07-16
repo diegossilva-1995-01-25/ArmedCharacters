@@ -1,0 +1,25 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+
+public class PanelObraVisual extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelObraVisual() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panel.add(lblNewLabel);
+
+	}
+
+}

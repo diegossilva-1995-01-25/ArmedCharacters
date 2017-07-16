@@ -1,0 +1,156 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
+
+import dao.DAOConexaoSingleton;
+import list.ListArmasPersonagem;
+import model.Arma;
+import model.Personagem;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrPersonagem implements ListArmasPersonagem, TableModel {
+	private Personagem personagem;
+	private List<Personagem> listaPersonagems;
+	private SimpleDateFormat dataSimples;
+	private Connection conex;
+	
+	public CtrPersonagem() {
+		listaPersonagems = new ArrayList<>();
+		dataSimples = new SimpleDateFormat("yyyy-MM-dd");
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	public void adicionarPersonagem(Personagem p) {
+		String sql = "INSERT INTO personagem (id, nome, dataNasc, origem, corOlhos, "
+				+ "corCabelo, raca, etnia, tipoPersonagem, biotipo, obra) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, a.getId());
+			statem.setString(2, a.getModelo());
+			statem.setString(3, a.getNomeNaObra());
+			statem.setDouble(4, a.getPeso());
+			statem.setDouble(5, a.getComprimentoCm());
+			statem.setInt(6, a.getAlcance());
+			statem.setString(7, a.getEquipamentos());
+			statem.setInt(8, a.getCapacidade());
+			statem.setInt(9, a.getPersongem());
+			statem.setInt(10, a.getCalibre());
+			statem.setInt(11, a.getFabricante());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void alterarPersonagem(Personagem p) {
+		
+	}
+	
+	public Personagem excluirPersonagem(Personagem p) {
+		return p;
+	}
+	
+	public List<Personagem> consultarArma() {
+		return listaPersonagems;
+	}
+	
+	public void contarPersonagems() {
+		
+	}
+
+	@Override
+	public List<Arma> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Arma a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String nomePersonagem) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Arma removerArma(Arma a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getColumnName(int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void removeTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

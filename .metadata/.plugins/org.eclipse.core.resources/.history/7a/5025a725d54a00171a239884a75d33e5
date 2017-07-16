@@ -1,0 +1,17 @@
+package view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
+public class TelaCalibre extends Tela {
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaCalibre() {
+		setBounds(100, 100, horizontal, vertical);
+
+	}
+
+}

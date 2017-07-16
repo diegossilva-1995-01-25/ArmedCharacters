@@ -1,0 +1,158 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import control.CtrFilme;
+import control.CtrObra;
+import model.Arma;
+import model.Obra;
+import obrachildren.obravisualchildren.Filme;
+import view.TelaObra;
+
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class PanelFilme extends PanelObraVisual implements ActionListener {
+	private JTextField txtTituloDublado;
+	private JTextField txtDiretor;
+	private JTable tableFilme;
+	
+	private TelaObra to;
+	private PanelObraVisual pOV;
+	private Filme filme;
+	private Obra obra;
+	private CtrFilme controleFilme;
+	private CtrObra controleObra;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelFilme() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblTituloDublado = new JLabel("T\u00EDtulo Dublado");
+		panel.add(lblTituloDublado);
+		
+		txtTituloDublado = new JTextField();
+		panel.add(txtTituloDublado);
+		txtTituloDublado.setColumns(10);
+		
+		JLabel lblDiretor = new JLabel("Diretor");
+		panel.add(lblDiretor);
+		
+		txtDiretor = new JTextField();
+		txtDiretor.setColumns(10);
+		panel.add(txtDiretor);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tableFilme = new JTable();
+		add(tableFilme, BorderLayout.CENTER);
+		
+		tO = new TelaObra();
+		pOV = new PanelObraVisual();
+		controleObra = new CtrObra();
+		controleFilme = new CtrFilme();
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			filme = new Filme();
+			filme = telaParaFilme(filme);
+			controleObra.adicionarObra(obra);
+			controleFilme.adicionarFilme(filme);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			filme = new Filme();
+			filme = telaParaFilme(filme);
+			controleObra.alterarObra(obra);
+			controleFilme.alterarFilme(filme);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			filme = new Filme();
+			filme = telaParaFilme(filme);
+			controleObra.consultarObra(obra.getTitulo());
+			controleFilme.consultarFilme(filme.getTitulo());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			filme = new Filme();
+			filme = telaParaFilme(filme);
+			obra = controleObra.excluirObra(obra);
+			filme = controleFilme.excluirFilme(filme);
+			limparTela();
+			
+		}
+	}
+	
+	public void atualizarTabela() {
+		tableFilme.invalidate();
+		tableFilme.revalidate();
+		tableFilme.repaint();
+	}
+	
+	public Filme telaParaFilme(Filme f) {
+		f.setId(Integer.parseInt(to.txtId.getText()));
+		f.setTitulo(to.txtTitulo.getText());
+		f.setAno(Integer.parseInt(to.txtAno.getText()));
+		f.setGenero(to.txtGenero.getText());
+		f.setDistribuidora(txtDistribuidora.getText());
+		f.setFranquia(txtFranquia.getText());
+		f.setTituloDublado(txtTituloDublado.getText());
+		f.setDiretor(txtDiretor.getText());
+		
+		return f;
+	}
+	
+	public void filmeParaTela(Filme f) {
+		to.txtId.setText("");
+		to.txtTitulo.setText("");
+		to.txtAno.setText("");
+		to.txtGenero.setText("");
+		txtDistribuidora.setText("");
+		txtFranquia.setText("");
+		txtTituloDublado.setText("");
+		txtDiretor.setText("");
+	}
+	
+	public void limparTela() {
+		to.txtId.setText("");
+		to.txtTitulo.setText("");
+		to.txtAno.setText("");
+		to.txtGenero.setText("");
+		txtDistribuidora.setText("");
+		txtFranquia.setText("");
+		txtTituloDublado.setText("");
+		txtDiretor.setText("");
+	}
+	
+}

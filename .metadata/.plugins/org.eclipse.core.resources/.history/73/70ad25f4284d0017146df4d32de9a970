@@ -1,0 +1,234 @@
+package view;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+
+import control.CtrArma;
+import model.Arma;
+
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+
+public class TelaArma extends Tela implements ActionListener {
+	private JPanel panelCampos;
+	private JTextField txtModelo;
+	private JLabel lblNomeNaObra;
+	private JTextField txtNomeNaObra;
+	private JLabel lblPeso;
+	private JTextField txtPeso;
+	private JLabel lblComprimentoCm;
+	private JTextField txtComprimento;
+	private JLabel lblAlcance;
+	private JTextField txtAlcance;
+	private JLabel lblEquipamentos;
+	private JTextField txtEquipamentos;
+	private JLabel lblCapacidade;
+	private JTextField txtCapacidade;
+	private JButton btnAdicionar;
+	private JButton btnAlterar;
+	private JButton btnExcluir;
+	private JButton btnConsultar;
+	private JTable tableArmas;
+	private JLabel lblPersonagem;
+	private JLabel lblCalibre;
+	private JLabel lblFabricante;
+	private JComboBox cbFabricante;
+	private JComboBox cbCalibre;
+	private JComboBox cbPersonagem;
+	private JLabel lblId;
+	private JTextField txtId;
+	
+	private Arma arma;
+	private CtrArma controleArma;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaArma() {
+		setTitle("Tela de Cadastro de Armas");
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+		
+		panelCampos = new JPanel();
+		getContentPane().add(panelCampos, BorderLayout.NORTH);
+		panelCampos.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		lblId = new JLabel("Id");
+		panelCampos.add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setColumns(10);
+		panelCampos.add(txtId);
+		
+		JLabel lblModelo = new JLabel("Modelo");
+		panelCampos.add(lblModelo);
+		
+		txtModelo = new JTextField();
+		panelCampos.add(txtModelo);
+		txtModelo.setColumns(10);
+		
+		lblNomeNaObra = new JLabel("Nome na Obra");
+		panelCampos.add(lblNomeNaObra);
+		
+		txtNomeNaObra = new JTextField();
+		txtNomeNaObra.setColumns(10);
+		panelCampos.add(txtNomeNaObra);
+		
+		lblPeso = new JLabel("Peso (Vazia)");
+		panelCampos.add(lblPeso);
+		
+		txtPeso = new JTextField();
+		txtPeso.setColumns(10);
+		panelCampos.add(txtPeso);
+		
+		lblComprimentoCm = new JLabel("Comprimento (cm)");
+		panelCampos.add(lblComprimentoCm);
+		
+		txtComprimento = new JTextField();
+		txtComprimento.setColumns(10);
+		panelCampos.add(txtComprimento);
+		
+		lblAlcance = new JLabel("Alcance");
+		panelCampos.add(lblAlcance);
+		
+		txtAlcance = new JTextField();
+		txtAlcance.setColumns(10);
+		panelCampos.add(txtAlcance);
+		
+		lblEquipamentos = new JLabel("Equipamentos");
+		panelCampos.add(lblEquipamentos);
+		
+		txtEquipamentos = new JTextField();
+		txtEquipamentos.setColumns(10);
+		panelCampos.add(txtEquipamentos);
+		
+		lblCapacidade = new JLabel("Capacidade (Pente/Tambor)");
+		panelCampos.add(lblCapacidade);
+		
+		txtCapacidade = new JTextField();
+		txtCapacidade.setColumns(10);
+		panelCampos.add(txtCapacidade);
+		
+		lblPersonagem = new JLabel("Personagem");
+		panelCampos.add(lblPersonagem);
+		
+		cbPersonagem = new JComboBox();
+		panelCampos.add(cbPersonagem);
+		
+		lblCalibre = new JLabel("Calibre");
+		panelCampos.add(lblCalibre);
+		
+		cbCalibre = new JComboBox();
+		panelCampos.add(cbCalibre);
+		
+		lblFabricante = new JLabel("Fabricante");
+		panelCampos.add(lblFabricante);
+		
+		cbFabricante = new JComboBox();
+		panelCampos.add(cbFabricante);
+		
+		btnAdicionar = new JButton("Adicionar");
+		panelCampos.add(btnAdicionar);
+		
+		btnAlterar = new JButton("Alterar");
+		panelCampos.add(btnAlterar);
+		
+		btnExcluir = new JButton("Excluir");
+		panelCampos.add(btnExcluir);
+		
+		btnConsultar = new JButton("Consultar");
+		panelCampos.add(btnConsultar);
+		
+		tableArmas = new JTable();
+		getContentPane().add(tableArmas, BorderLayout.CENTER);
+		
+		controleArma = new CtrArma();
+
+	}
+	
+	public Arma telaParaArma(Arma a) {
+		a.setId(Integer.parseInt(txtId.getText()));
+		a.setModelo(txtModelo.getText());
+		a.setNomeNaObra(txtNomeNaObra.getText());
+		a.setPeso(Double.parseDouble(txtPeso.getText()));
+		a.setComprimentoCm(Double.parseDouble(txtComprimento.getText()));
+		a.setAlcance(Integer.parseInt(txtAlcance.getText()));
+		a.setEquipamentos(txtEquipamentos.getText());
+		a.setCapacidade(Integer.parseInt(txtCapacidade.getText()));
+		a.setPersongem(Integer.parseInt(cbPersonagem.getSelectedItem().toString()));
+		a.setCalibre(Integer.parseInt(cbCalibre.getSelectedItem().toString()));
+		a.setFabricante(Integer.parseInt(cbFabricante.getSelectedItem().toString()));
+		return a;
+	}
+	
+	public void armaParaTela(Arma a) {
+		txtId.setText(String.valueOf(a.getId()));
+		txtModelo.setText(a.getModelo());
+		txtNomeNaObra.setText(a.getNomeNaObra());
+		txtPeso.setText(String.valueOf(a.getPeso()));
+		txtComprimento.setText(String.valueOf(a.getComprimentoCm()));
+		txtAlcance.setText(String.valueOf(a.getAlcance()));
+		txtEquipamentos.setText(a.getEquipamentos());
+		txtCapacidade.setText(String.valueOf(a.getCapacidade()));
+	 	cbPersonagem.setSelectedItem(String.valueOf(a.getPersongem()));
+	 	cbCalibre.setSelectedItem(String.valueOf(a.getCalibre()));
+	 	cbFabricante.setSelectedItem(String.valueOf(a.getFabricante()));
+	}
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		txtId.setText("");
+		txtModelo.setText("");
+		txtNomeNaObra.setText("");
+		txtPeso.setText("");
+		txtComprimento.setText("");
+		txtAlcance.setText("");
+		txtEquipamentos.setText("");
+		txtCapacidade.setText("");
+		cbPersonagem.setSelectedIndex(0);
+	 	cbCalibre.setSelectedIndex(0);
+	 	cbFabricante.setSelectedIndex(0);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			arma = new Arma();
+			arma = telaParaArma(arma);
+			controleArma.adicionarArma(arma);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			arma = new Arma();
+			arma = telaParaArma(arma);
+			controleArma.alterarArma(arma);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			arma = new Arma();
+			arma = telaParaArma(arma);
+			controleArma.consultarArma(arma.getModelo());
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			arma = new Arma();
+			arma = telaParaArma(arma);
+			arma = controleArma.excluirArma(arma);
+			limparTela();
+			
+		}
+		
+		
+	}
+
+}

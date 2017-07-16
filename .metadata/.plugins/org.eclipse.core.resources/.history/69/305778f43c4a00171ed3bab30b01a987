@@ -1,0 +1,13 @@
+package obrachildren.obravisualchildren;
+
+import obrachildren.ObraVisual;
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class Game extends ObraVisual {
+	private String plataformas;
+	private String criador;
+	private String desenvolvedoras;
+}

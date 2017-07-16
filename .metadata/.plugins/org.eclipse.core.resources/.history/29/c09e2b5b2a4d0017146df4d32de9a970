@@ -1,0 +1,158 @@
+package view;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import model.Arma;
+import model.Calibre;
+import model.Fabricante;
+
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class TelaFabricante extends Tela implements ActionListener {
+	private JTextField txtId;
+	private JTextField txtNome;
+	private JTextField txtOrigem;
+	private JTextField txtAnoFundacao;
+	private JTable tableFabricante;
+	private JTextField txtFundador;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaFabricante() {
+		setTitle("Tela de Cadastro de Fabricantes");
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+		
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		panel.add(txtId);
+		txtId.setColumns(10);
+		
+		JLabel lblNome = new JLabel("Nome");
+		panel.add(lblNome);
+		
+		txtNome = new JTextField();
+		txtNome.setColumns(10);
+		panel.add(txtNome);
+		
+		JLabel lblOrigem = new JLabel("Origem");
+		panel.add(lblOrigem);
+		
+		txtOrigem = new JTextField();
+		txtOrigem.setColumns(10);
+		panel.add(txtOrigem);
+		
+		JLabel lblAnoFundacao = new JLabel("Ano de Funda\u00E7\u00E3o");
+		panel.add(lblAnoFundacao);
+		
+		txtAnoFundacao = new JTextField();
+		txtAnoFundacao.setColumns(10);
+		panel.add(txtAnoFundacao);
+		
+		JLabel lblFundador = new JLabel("Fundador");
+		panel.add(lblFundador);
+		
+		txtFundador = new JTextField();
+		txtFundador.setColumns(10);
+		panel.add(txtFundador);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tableFabricante = new JTable();
+		getContentPane().add(tableFabricante, BorderLayout.CENTER);
+
+	}
+	
+	public void telaParaFabricante(Fabricante f) {
+		f.setId(Integer.parseInt(txtId.getText()));
+		f.setNome(txtNome.getText());
+		f.setOrigem(txtOrigem.getText());
+		f.setAnoFundacao(Integer.parseInt(txtAnoFundacao.getText()));
+		f.setFundador(txtFundador.getText());
+	}
+	
+	public void fabricanteParaTela(Fabricante f) {
+		txtId.setText(String.valueOf(f.getId()));
+		txtNome.setText(f.getNome());
+		txtOrigem.setText(f.getOrigem());
+		txtAnoFundacao.setText(String.valueOf(f.getAnoFundacao()));
+		txtFundador.setText(f.getFundador());
+	}
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		txtId.setText("");
+		txtNome.setText("");
+		txtOrigem.setText("");
+		txtAnoFundacao.setText("");
+		txtFundador.setText("");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			calibre = new Calibre();
+			calibre = telaParaCalibre(calibre);
+			controleCalibre.adicionarCalibre(calibre);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			calibre = new Calibre();
+			calibre = telaParaCalibre(calibre);
+			controleCalibre.alterarCalibre(calibre);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			calibre = new Calibre();
+			calibre = telaParaCalibre(calibre);
+			controleCalibre.consultarCalibre(calibre.getNome());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			calibre = new Calibre();
+			calibre = telaParaCalibre(calibre);
+			calibre = controleCalibre.excluirCalibre(calibre);
+			limparTela();
+			
+		}
+		
+		
+	}
+	
+	public void atualizarTabela() {
+		tableCalibre.invalidate();
+		tableCalibre.revalidate();
+		tableCalibre.repaint();
+	}
+
+}

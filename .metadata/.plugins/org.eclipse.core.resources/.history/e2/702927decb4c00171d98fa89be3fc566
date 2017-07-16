@@ -1,0 +1,68 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import list.ListArmasPersonagem;
+import model.Arma;
+import model.Personagem;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrPersonagem implements ListArmasPersonagem {
+	private Personagem personagem;
+	private List<Personagem> listaPersonagems;
+	
+	public CtrPersonagem() {
+		listaPersonagems = new ArrayList<>();
+	}
+	
+	public void adicionarPersonagem(Personagem p) {
+		
+	}
+	
+	public void alterarPersonagem(Personagem p) {
+		
+	}
+	
+	public Personagem excluirPersonagem(Personagem p) {
+		return p;
+	}
+	
+	public List<Personagem> consultarArma() {
+		return listaPersonagems;
+	}
+	
+	public void contarPersonagems() {
+		
+	}
+
+	@Override
+	public List<Arma> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Arma a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String nomePersonagem) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Arma removerArma(Arma a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

@@ -1,0 +1,23 @@
+package control;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.DAOConexaoSingleton;
+import model.Obra;
+
+public class CtrObra {
+	
+	private Obra obra;
+	private List<Obra> listaObra;
+	private Connection conex;
+	
+	public CtrObra() {
+		listaObra = new ArrayList<>();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	
+	
+}

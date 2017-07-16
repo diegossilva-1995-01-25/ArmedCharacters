@@ -1,0 +1,36 @@
+package list;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import model.Arma;
+import model.Personagem;;
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class ListPersonagensObra {
+	private List<Arma> listaPersonagensPorObra;
+	
+	public ListPersonagensObra() {
+		
+	}
+	
+	public List<Arma> instanciarLista() {
+		return listaPersonagensPorObra = new ArrayList<>();
+	}
+	
+	public void adicionarArma(Arma a) {
+		
+	}
+	
+	public void listarArmas(String tituloObra) {
+		
+	}
+	
+	public Arma removerArma(Arma a) {
+		return a;
+	}
+	
+}

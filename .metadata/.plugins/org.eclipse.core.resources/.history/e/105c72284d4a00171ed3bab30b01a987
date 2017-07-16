@@ -1,0 +1,31 @@
+package list;
+
+import model.Arma;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class ListArmasCalibre {
+	
+	
+	public ListArmasCalibre() {
+		
+	}
+	
+	
+	
+	public void adicionarArma(Arma a) {
+		
+	}
+	
+	public void listarArmas() {
+		
+	}
+	
+	public Arma removerArma(Arma a) {
+		return a;
+	}
+	
+}

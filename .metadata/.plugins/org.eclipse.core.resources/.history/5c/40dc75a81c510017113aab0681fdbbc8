@@ -1,0 +1,148 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+
+import control.CtrObra;
+import control.CtrSerie;
+import model.Obra;
+import obrachildren.obravisualchildren.Serie;
+
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class TelaSerie extends Tela {
+
+	private JPanel contentPane;
+	private JTextField txtId;
+	private JTextField txtTitulo;
+	private JTextField txtAno;
+	private JTextField txtGenero;
+	private JTextField txtDistribuidora;
+	private JTextField txtFranquia;
+	private JTextField txtNumEpisodios;
+	private JTextField txtNumTemporadas;
+	private JTextField txtTipoSerie;
+	private JTable tableSerie;
+	private Serie serie;
+	private CtrSerie controleSerie;
+	private CtrObra controleObra;
+	private Obra obra;
+	private JScrollPane rolagem;
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaSerie() {
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblId = new JLabel("Id");
+		panel.add(lblId);
+		
+		txtId = new JTextField();
+		txtId.setColumns(10);
+		panel.add(txtId);
+		
+		JLabel lblTitulo = new JLabel("T\u00EDtulo");
+		panel.add(lblTitulo);
+		
+		txtTitulo = new JTextField();
+		txtTitulo.setColumns(10);
+		panel.add(txtTitulo);
+		
+		JLabel lblAno = new JLabel("Ano");
+		panel.add(lblAno);
+		
+		txtAno = new JTextField();
+		txtAno.setColumns(10);
+		panel.add(txtAno);
+		
+		JLabel lblGenero = new JLabel("G\u00EAnero");
+		panel.add(lblGenero);
+		
+		txtGenero = new JTextField();
+		txtGenero.setColumns(10);
+		panel.add(txtGenero);
+		
+		JLabel lblDistribuidora = new JLabel("Distribuidora");
+		panel.add(lblDistribuidora);
+		
+		txtDistribuidora = new JTextField();
+		txtDistribuidora.setColumns(10);
+		panel.add(txtDistribuidora);
+		
+		JLabel lblFranquia = new JLabel("Franquia");
+		panel.add(lblFranquia);
+		
+		txtFranquia = new JTextField();
+		txtFranquia.setColumns(10);
+		panel.add(txtFranquia);
+		
+		JLabel lblNumEpisodios = new JLabel("N\u00FAmero de Epis\u00F3dios");
+		panel.add(lblNumEpisodios);
+		
+		txtNumEpisodios = new JTextField();
+		txtNumEpisodios.setColumns(10);
+		panel.add(txtNumEpisodios);
+		
+		JLabel lblNumTemporadas = new JLabel("N\u00FAmero de Temporadas");
+		panel.add(lblNumTemporadas);
+		
+		txtNumTemporadas = new JTextField();
+		txtNumTemporadas.setColumns(10);
+		panel.add(txtNumTemporadas);
+		
+		JLabel lblTipoSerie = new JLabel("Tipo de S\u00E9rie");
+		panel.add(lblTipoSerie);
+		
+		txtTipoSerie = new JTextField();
+		txtTipoSerie.setColumns(10);
+		panel.add(txtTipoSerie);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		JPanel panelTable = new JPanel();
+		contentPane.add(panelTable, BorderLayout.CENTER);
+		
+		tableSerie = new JTable();
+		panelTable.add(tableSerie);
+	}
+
+
+
+	@Override
+	public void limparTela() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+package view;
+
+import javax.swing.JInternalFrame;
+
+public abstract class Tela extends JFrame {
+	protected int vertical;
+	protected int horizontal;
+	
+	public Tela() {
+		vertical = 600;
+		horizontal = 600;
+	}
+	
+}

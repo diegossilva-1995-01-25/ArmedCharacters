@@ -1,0 +1,13 @@
+package obrachildren.obravisualchildren;
+
+import obrachildren.ObraVisual;
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class Serie extends ObraVisual {
+	private int numEpisodios;
+	private int numTemporadas;
+	private String tipoSerire;
+}

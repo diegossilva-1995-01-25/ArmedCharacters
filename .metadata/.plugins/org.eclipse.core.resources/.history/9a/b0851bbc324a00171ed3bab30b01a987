@@ -1,0 +1,17 @@
+package model;
+
+import list.*;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public abstract class Obra {
+	private String titulo;
+	private int ano;
+	private String genero;
+	private ListaPersonagemObra personagens;	
+	
+	
+}

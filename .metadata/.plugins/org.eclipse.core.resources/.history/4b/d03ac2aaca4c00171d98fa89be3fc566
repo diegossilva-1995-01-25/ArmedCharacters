@@ -1,0 +1,145 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.DAOConexaoSingleton;
+import list.ListArmasCalibre;
+import list.ListArmasFabricante;
+import model.Arma;
+import model.Calibre;
+import model.Fabricante;
+
+/*
+ * Autor: Diego Souza Silva
+ * Data: 05/06/2017;
+ */
+
+public class CtrFabricante implements ListArmasFabricante {
+	private Fabricante fabricante;
+	private List<Fabricante> listaFabricantes;
+	private Connection conex;
+	private ListArmasCalibre armasCalibre;
+	private List<Arma> listArmas;
+	private Arma arma;
+	
+	public CtrFabricante() {
+		listaFabricantes = new ArrayList<>();
+		listArmas = armasCalibre.instanciarLista();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+		arma = new Arma();
+	}
+	
+	public void adicionarFabricante(Fabricante f) {
+		String sql = "INSERT INTO fabricante (id, nome, origem, anoFundacao, fundador) "
+				+ "VALUES (?, ?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, f.getId());
+			statem.setString(2, f.getNome());
+			statem.setString(3, f.getOrigem());
+			statem.setInt(4, f.getAnoFundacao());
+			statem.setString(5, f.getFundador());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void alterarFabricante(Fabricante f) {
+		String sql = "UPDATE fabricante SET id = ?, nome = ?, origem = ?, anoFundacao = ?,"
+				+ "fundador = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, f.getId());
+			statem.setString(2, f.getNome());
+			statem.setString(3, f.getOrigem());
+			statem.setInt(4, f.getAnoFundacao());
+			statem.setString(5, f.getFundador());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Fabricante excluirFabricante(Fabricante f) {
+		String sql = "DELETE FROM fabricante WHERE id = ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, f.getId());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return f;
+	}
+	
+	public List<Fabricante> consultarFabricante(String nome) {
+		listaFabricantes = new ArrayList<Fabricante>();
+		String sql = "SELECT * FROM fabricante WHERE modelo LIKE ?";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setString(1, "%" + nome + "%");
+			ResultSet rs = statem.executeQuery();
+			
+			while(rs.next()) {
+				Fabricante f = new Fabricante();
+				
+				f.setId(rs.getInt("id"));
+				f.setNome(rs.getString("nome"));
+				f.setOrigem(rs.getString("origem"));
+				f.setAnoFundacao(rs.getInt("anoFundacao"));
+				f.setFundador(rs.getString("fundador"));
+				listaFabricantes.add(f);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listaFabricantes;
+	}
+	
+	public void contarFabricante() {
+		
+	}
+
+	@Override
+	public List<Arma> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Arma a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String nomeFabricante) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Arma removerArma(Arma a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

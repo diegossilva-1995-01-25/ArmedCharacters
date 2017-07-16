@@ -1,0 +1,143 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+
+import control.CtrObra;
+import control.CtrSerie;
+import model.Arma;
+import obrachildren.obravisualchildren.Game;
+import obrachildren.obravisualchildren.Serie;
+import view.TelaObra;
+
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class PanelSerie extends PanelObraVisual implements ActionListener {
+	private final JTextField txtNumEpisodios = new JTextField();
+	private JTextField txtNumTemporadas;
+	private JTextField txtTipoSerie;
+	private final JButton btnConsultar = new JButton("Consultar");
+	private JTable tableSerie;
+	
+	private TelaObra to;
+	private PanelObraVisual pOV;
+	private Serie serie;
+	private CtrSerie controleSerie;
+	private CtrObra controleObra;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelSerie() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblNumEpisodios = new JLabel("N\u00FAmero de Epis\u00F3dios");
+		panel.add(lblNumEpisodios);
+		panel.add(txtNumEpisodios);
+		txtNumEpisodios.setColumns(10);
+		
+		JLabel lblNumTemporadas = new JLabel("N\u00FAmero de Temporadas");
+		panel.add(lblNumTemporadas);
+		
+		txtNumTemporadas = new JTextField();
+		txtNumTemporadas.setColumns(10);
+		panel.add(txtNumTemporadas);
+		
+		JLabel lblTipoSerie = new JLabel("Tipo de S\u00E9rie");
+		panel.add(lblTipoSerie);
+		
+		txtTipoSerie = new JTextField();
+		txtTipoSerie.setColumns(10);
+		panel.add(txtTipoSerie);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tableSerie = new JTable();
+		add(tableSerie, BorderLayout.CENTER);
+		
+		tO = new TelaObra();
+		pOV = new PanelObraVisual();
+		
+		serie = new Serie();
+		controleObra = new CtrObra();
+		controleSerie = new CtrSerie();
+
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String comando = e.getActionCommand();
+		
+		if(comando.equals("Adicionar")) {
+			serie = new Serie();
+			serie = telaParaGame(serie);
+			//controleObra.adicionarObra(obra);
+			controleGame.adicionarGame(game);
+			limparTela();
+			
+		} else if(comando.equals("Alterar")) {
+			game = new Game();
+			game = telaParaGame(game);
+			//controleObra.alterarObra(obra);
+			controleGame.alterarGame(game);
+			limparTela();
+			
+		} else if(comando.equals("Consultar")) {
+			game = new Game();
+			game = telaParaGame(game);
+			//controleObra.consultarObra(obra.getTitulo);
+			controleGame.consultarGame(game.getTitulo());
+			atualizarTabela();
+			limparTela();
+			
+		} else if(comando.equals("Excluir")) {
+			game = new Game();
+			game = telaParaGame(game);
+			//obra = controleObra.exclirObra(obra);
+			game = controleGame.excluirGame(game);
+			limparTela();
+			
+		}
+	}
+	
+	public void atualizarTabela() {
+		tableSerie.invalidate();
+		tableSerie.revalidate();
+		tableSerie.repaint();
+	}
+	
+	public Serie telaParaSerie(Serie s) {
+		
+		
+		return s;
+	}
+	
+	public void serieParaTela(Serie s) {
+		
+	}
+	
+	public void limparTela() {
+		
+	}
+	
+}

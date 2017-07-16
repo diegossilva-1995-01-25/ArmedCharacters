@@ -1,0 +1,21 @@
+package view;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+public class TelaFabricante extends Tela {
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaFabricante() {
+		setResizable(false);
+		setBounds(100, 100, 600, 600);
+		
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+
+	}
+
+}

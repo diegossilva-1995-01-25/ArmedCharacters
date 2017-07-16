@@ -1,0 +1,63 @@
+package control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import list.ListPersonagensObra;
+import model.Personagem;
+import obrachildren.ObraEscrita;
+
+public class CtrObraEscrita implements ListPersonagensObra {
+	
+	private ObraEscrita obraEscrita;
+	private List<ObraEscrita> listaObrasEscritas;
+	
+	public CtrObraEscrita() {
+		listaObrasEscritas = new ArrayList<>();
+	}
+	
+	public void adicionarObraEscrita() {
+		
+	}
+	
+	public void alterarObraEscrita(ObraEscrita oE) {
+		
+	}
+	
+	public ObraEscrita excluirObraEscrita(ObraEscrita oE) {
+		return oE;
+	}
+	
+	public List<ObraEscrita> consultarObraEscrita() {
+		return listaObrasEscritas;
+	}
+	
+	public void contarObrasEscritas() {
+		
+	}
+
+	@Override
+	public List<Personagem> instanciarLista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void adicionarArma(Personagem p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listarArmas(String tituloObra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Personagem removerArma(Personagem p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

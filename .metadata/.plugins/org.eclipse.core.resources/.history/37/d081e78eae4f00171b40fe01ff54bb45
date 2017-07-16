@@ -1,0 +1,70 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.DAOConexaoSingleton;
+import model.Obra;
+import obrachildren.obravisualchildren.Filme;
+
+public class CtrObra {
+	
+	private Obra obra;
+	private List<Obra> listaObras;
+	private Connection conex;
+	
+	public CtrObra() {
+		listaObras = new ArrayList<>();
+		conex = DAOConexaoSingleton.getInstanciaUnica().getConexao();
+	}
+	
+	public void adicionarObra(Obra o) {
+		String sql = "INSERT INTO obra (id, titulo, ano, genero) "
+				+ "VALUES (?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement statem = conex.prepareStatement(sql);
+			statem.setInt(1, a.getId());
+			statem.setString(2, a.getModelo());
+			statem.setString(3, a.getNomeNaObra());
+			statem.setDouble(4, a.getPeso());
+			statem.setDouble(5, a.getComprimentoCm());
+			statem.setInt(6, a.getAlcance());
+			statem.setString(7, a.getEquipamentos());
+			statem.setInt(8, a.getCapacidade());
+			statem.setInt(9, a.getPersongem());
+			statem.setInt(10, a.getCalibre());
+			statem.setInt(11, a.getFabricante());
+			statem.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void alterarObra(Obra o) {
+		
+	}
+	
+	public Obra excluirObra(Obra o) {
+		return o;
+	}
+	
+	public List<Obra> consultarObra(String titulo) {
+		return listaObras;
+	}
+	
+	public int contarObras() {
+		int contagem = 0;
+		
+		
+		
+		return contagem;
+	}
+	
+	
+	
+}

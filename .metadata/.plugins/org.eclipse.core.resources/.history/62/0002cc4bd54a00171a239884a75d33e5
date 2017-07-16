@@ -1,0 +1,18 @@
+package view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
+public class TelaArma extends Tela {
+	
+	/**
+	 * Create the frame.
+	 */
+	public TelaArma() {
+		setResizable(false);
+		setBounds(100, 100, horizontal, vertical);
+
+	}
+
+}

@@ -1,0 +1,62 @@
+package view.obrapanels;
+
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class PanelSerie extends PanelAbstrato {
+	private final JTextField txtNumEpisodios = new JTextField();
+	private JTextField txtNumTemporadas;
+	private JTextField txtTipoSerie;
+	private final JButton btnConsultar = new JButton("Consultar");
+	private JTable tableSerie;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelSerie() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.NORTH);
+		panel.setLayout(new GridLayout(0, 2, 5, 5));
+		
+		JLabel lblNumEpisodios = new JLabel("N\u00FAmero de Epis\u00F3dios");
+		panel.add(lblNumEpisodios);
+		panel.add(txtNumEpisodios);
+		txtNumEpisodios.setColumns(10);
+		
+		JLabel lblNumTemporadas = new JLabel("N\u00FAmero de Temporadas");
+		panel.add(lblNumTemporadas);
+		
+		txtNumTemporadas = new JTextField();
+		txtNumTemporadas.setColumns(10);
+		panel.add(txtNumTemporadas);
+		
+		JLabel lblTipoSerie = new JLabel("Tipo de S\u00E9rie");
+		panel.add(lblTipoSerie);
+		
+		txtTipoSerie = new JTextField();
+		txtTipoSerie.setColumns(10);
+		panel.add(txtTipoSerie);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		panel.add(btnAdicionar);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		panel.add(btnAlterar);
+		panel.add(btnConsultar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		panel.add(btnExcluir);
+		
+		tableSerie = new JTable();
+		add(tableSerie, BorderLayout.CENTER);
+
+	}
+
+}
